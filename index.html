@@ -35,88 +35,35 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(5deg); }
+            0%, 100% { transform: translateY(0px) rotate(-20deg); }
+            50% { transform: translateY(-30px) rotate(-20deg); }
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.9; }
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
         }
 
-        @keyframes glow {
-            0%, 100% { filter: drop-shadow(0 0 30px rgba(0, 255, 220, 0.8)) drop-shadow(0 0 60px rgba(255, 0, 150, 0.4)); }
-            50% { filter: drop-shadow(0 0 50px rgba(0, 200, 255, 1)) drop-shadow(0 0 80px rgba(255, 100, 200, 0.6)); }
-        }
-
-        @keyframes rotate3d {
-            0% { transform: rotateY(0deg) rotateX(0deg); }
-            100% { transform: rotateY(360deg) rotateX(10deg); }
-        }
-
-        .floating-shape {
+        .space-element {
             position: absolute;
-            mix-blend-mode: screen;
+            z-index: 2;
         }
 
-        .shape-1 {
-            width: 450px;
-            height: 450px;
-            background: linear-gradient(135deg, #ff0080 0%, #ff6e00 50%, #ffff00 100%);
+        .rocket {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .satellite {
+            animation: orbit 12s linear infinite;
+        }
+
+        .drone {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .planet {
             border-radius: 50%;
-            top: -100px;
-            left: -150px;
-            filter: blur(70px);
-            animation: glow 6s ease-in-out infinite, float 15s ease-in-out infinite;
-            opacity: 0.3;
-        }
-
-        .shape-2 {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, #00ffff 0%, #00aaff 50%, #5500ff 100%);
-            border-radius: 50%;
-            top: 30%;
-            right: -80px;
-            filter: blur(65px);
-            animation: glow 7s ease-in-out infinite reverse, float 14s ease-in-out infinite reverse;
-            opacity: 0.35;
-        }
-
-        .shape-3 {
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, #ff00ff 0%, #ff0080 50%, #00ffff 100%);
-            border-radius: 50%;
-            bottom: -150px;
-            left: 10%;
-            filter: blur(80px);
-            animation: glow 5.5s ease-in-out infinite, float 18s ease-in-out infinite;
-            opacity: 0.25;
-        }
-
-        .shape-4 {
-            width: 350px;
-            height: 350px;
-            background: linear-gradient(135deg, #00ff88 0%, #00ffff 50%, #ffff00 100%);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            top: 20%;
-            left: 5%;
-            filter: blur(50px);
-            animation: pulse 4s ease-in-out infinite, float 16s ease-in-out infinite;
-            opacity: 0.3;
-        }
-
-        .shape-5 {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, #ff6600 0%, #ffff00 50%, #00ffcc 100%);
-            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-            bottom: 15%;
-            right: 15%;
-            filter: blur(55px);
-            animation: pulse 3.5s ease-in-out infinite reverse, float 17s ease-in-out infinite;
-            opacity: 0.32;
+            animation: float 15s ease-in-out infinite;
         }
 
         @keyframes bounceIn {
@@ -200,15 +147,47 @@
             width: 80%;
         }
 
+        .language-toggle {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.6rem 1rem;
+            border-radius: 25px;
+            border: 2px solid #ff006e;
+        }
+
+        .language-toggle button {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            color: #1a1a2e;
+        }
+
+        .language-toggle button.active {
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 0, 110, 0.3);
+        }
+
+        .language-toggle button:hover {
+            transform: translateY(-2px);
+        }
+
         /* HERO */
         .hero {
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1050 25%, #2d0f5a 50%, #1a1050 75%, #0a0e27 100%);
+            background: linear-gradient(180deg, #001a4d 0%, #0a2d6d 30%, #1a4d8d 60%, #2d6daa 100%);
             color: white;
             padding: 7rem 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
-            min-height: 600px;
+            min-height: 700px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -220,18 +199,22 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(90deg, transparent 24%, rgba(0, 255, 220, 0.05) 25%, rgba(0, 255, 220, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 220, 0.05) 75%, rgba(0, 255, 220, 0.05) 76%, transparent 77%, transparent),
-                linear-gradient(180deg, transparent 24%, rgba(0, 255, 220, 0.05) 25%, rgba(0, 255, 220, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 220, 0.05) 75%, rgba(0, 255, 220, 0.05) 76%, transparent 77%, transparent);
-            background-size: 50px 50px;
-            background-position: 0 0, 25px 25px;
-            animation: slideGrid 20s linear infinite;
+                radial-gradient(2px 2px at 20% 30%, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 60% 70%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50% 50%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 80% 10%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 10% 90%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40% 80%, #fff, rgba(0,0,0,0));
+            background-size: 200% 200%, 150% 150%, 180% 180%, 220% 220%, 190% 190%, 210% 210%;
+            background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+            animation: starTwinkle 5s ease-in-out infinite;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
         }
 
-        @keyframes slideGrid {
-            0% { background-position: 0 0, 25px 25px; }
-            100% { background-position: 50px 50px, 75px 75px; }
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
         }
 
         .hero::after {
@@ -239,11 +222,43 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(255, 0, 150, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(0, 200, 255, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 50% 30%, rgba(100, 200, 255, 0.1) 0%, transparent 50%);
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 200, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 150, 255, 0.1) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
+        }
+
+        .space-element {
+            position: absolute;
+            z-index: 2;
+        }
+
+        .rocket {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .satellite {
+            animation: orbit 12s linear infinite;
+        }
+
+        .drone {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .planet {
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(-20deg); }
+            50% { transform: translateY(-30px) rotate(-20deg); }
+        }
+
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
         }
 
         .floating-shape {
@@ -300,7 +315,7 @@
 
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 10;
             max-width: 800px;
             animation: fadeInUp 0.8s ease-out;
         }
@@ -1127,8 +1142,9 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 2rem; }
+            header { flex-direction: column; gap: 1.5rem; }
             nav { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+            .language-toggle { order: -1; }
             .hero h1 { font-size: 2.2rem; }
             .hero p { font-size: 1.1rem; }
             .toggle-container { flex-direction: column; }
@@ -1138,34 +1154,396 @@
             .toggle-btn { width: 100%; }
             .page-header h1 { font-size: 2rem; }
             .form-container { padding: 2rem; }
+            
+            /* Mobile Chatbot Fix */
+            .chatbot-container {
+                width: calc(100vw - 40px) !important;
+                height: 70vh !important;
+                bottom: 80px !important;
+                right: 20px !important;
+                left: auto !important;
+                max-width: 100% !important;
+            }
+            
+            .chatbot-widget {
+                right: 10px !important;
+                bottom: 10px !important;
+            }
         }
-    </style>
+
+        @media (max-width: 480px) {
+            body { overflow-x: hidden; }
+            header { padding: 1rem; }
+            nav a { font-size: 0.85rem; }
+            .language-toggle { padding: 0.4rem 0.6rem; }
+            .language-toggle button { padding: 0.3rem 0.6rem; font-size: 0.9rem; }
+            .hero { padding: 3rem 1rem; min-height: 500px; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { font-size: 0.95rem; }
+            .services-grid { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem; }
+            .form-container { padding: 1.5rem; max-width: 100% !important; }
+            .form-container form { width: 100%; }
+            
+            /* Mobile Chatbot Fixes */
+            .chatbot-container {
+                width: calc(100vw - 20px) !important;
+                height: 75vh !important;
+                bottom: 70px !important;
+                right: 10px !important;
+                border-radius: 12px !important;
+            }
+            
+            .chatbot-button {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+            }
+            
+            .chatbot-input-area {
+                padding: 0.8rem;
+            }
+            
+            .chatbot-input {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            
+            .message-content {
+                max-width: 90%;
+                font-size: 0.85rem;
+                padding: 0.7rem 1rem;
+            }
+            
+            footer { padding: 2rem 1rem; font-size: 0.9rem; }
+            footer p { margin: 0.8rem 0; }
+        }
+
+        /* CHATBOT STYLES */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8338ec 0%, #ff006e 100%);
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(131, 56, 236, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(131, 56, 236, 0.6);
+        }
+
+        .chatbot-button.active {
+            display: none;
+        }
+
+        .chatbot-container {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 600px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 0.3s ease-out;
+            display: none;
+        }
+
+        .chatbot-container.active {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #8338ec 0%, #ff006e 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: #f8f8f8;
+        }
+
+        .chat-message {
+            margin-bottom: 1.2rem;
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-bot {
+            justify-content: flex-start;
+        }
+
+        .message-user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .message-bot .message-content {
+            background: white;
+            color: #0f0a1a;
+            border-left: 3px solid #8338ec;
+        }
+
+        .message-user .message-content {
+            background: linear-gradient(135deg, #8338ec 0%, #ff006e 100%);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .chatbot-input-area {
+            padding: 1rem;
+            border-top: 1px solid #e0e0e0;
+            background: white;
+            border-radius: 0 0 12px 12px;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 0.7rem 1rem;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .chatbot-input:focus {
+            border-color: #8338ec;
+        }
+
+        .chatbot-send {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8338ec 0%, #ff006e 100%);
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-send:hover {
+            transform: scale(1.05);
+        }
+
+        .quick-replies {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .quick-reply-btn {
+            padding: 0.6rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #0f0a1a;
+            transition: all 0.3s ease;
+        }
+
+        .quick-reply-btn:hover {
+            background: #f0f0f0;
+            border-color: #8338ec;
+            color: #8338ec;
+        }
+
+        @media (max-width: 768px) {
+            .chatbot-container {
+                width: 100%;
+                height: 70vh;
+                right: 0;
+                left: 0;
+                border-radius: 12px 12px 0 0;
+                bottom: auto;
+                top: auto;
+                margin: 0;
+            }
+
+            .message-content {
+                max-width: 85%;
+            }
+        }
 </head>
 <body>
     <header>
         <div class="logo">⚡ Quantum</div>
         <nav>
-            <a onclick="showPage('home')">Home</a>
-            <a onclick="showPage('training')">Training</a>
-            <a onclick="showPage('ai')">AI</a>
-            <a onclick="showPage('agriculture')">Agriculture</a>
-            <a onclick="showPage('stem')">STEM</a>
+            <a onclick="showPage('home')" data-en="Home" data-ms="Beranda">Home</a>
+            <a onclick="showPage('training')" data-en="Training" data-ms="Latihan">Training</a>
+            <a onclick="showPage('ai')" data-en="AI" data-ms="AI">AI</a>
+            <a onclick="showPage('agriculture')" data-en="Agriculture" data-ms="Pertanian">Agriculture</a>
+            <a onclick="showPage('stem')" data-en="STEM" data-ms="STEM">STEM</a>
         </nav>
+        <div class="language-toggle">
+            <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="switchLanguage('ms')">BM</button>
+        </div>
     </header>
 
     <!-- HOME PAGE -->
     <div id="home" class="page active">
         <div class="hero">
-            <!-- Animated Floating Shapes -->
-            <div class="floating-shape shape-1"></div>
-            <div class="floating-shape shape-2"></div>
-            <div class="floating-shape shape-3"></div>
-            <div class="floating-shape shape-4"></div>
-            <div class="floating-shape shape-5"></div>
+            <!-- ROCKET -->
+            <svg class="space-element rocket" style="width: 120px; height: 120px; top: 10%; left: 5%;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Rocket body -->
+                <rect x="35" y="20" width="30" height="60" rx="15" fill="#ff6b35" stroke="#fff" stroke-width="2"/>
+                <!-- Rocket window -->
+                <circle cx="50" cy="30" r="8" fill="#00d4ff" stroke="#fff" stroke-width="1"/>
+                <!-- Rocket fins -->
+                <polygon points="35,75 30,95 35,85" fill="#ff0080" stroke="#fff" stroke-width="1"/>
+                <polygon points="65,75 70,95 65,85" fill="#ff0080" stroke="#fff" stroke-width="1"/>
+                <!-- Rocket flame -->
+                <polygon points="40,80 50,95 60,80" fill="#ffaa00" opacity="0.8"/>
+                <polygon points="43,82 50,92 57,82" fill="#ffff00" opacity="0.9"/>
+            </svg>
+
+            <!-- SATELLITE -->
+            <svg class="space-element satellite" style="width: 100px; height: 100px; top: 30%; right: 8%;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Solar panels left -->
+                <rect x="10" y="35" width="15" height="30" fill="#00d4ff" stroke="#fff" stroke-width="1"/>
+                <!-- Solar panels right -->
+                <rect x="75" y="35" width="15" height="30" fill="#00d4ff" stroke="#fff" stroke-width="1"/>
+                <!-- Center body -->
+                <rect x="35" y="30" width="30" height="40" rx="5" fill="#888" stroke="#fff" stroke-width="2"/>
+                <!-- Antenna -->
+                <line x1="50" y1="25" x2="50" y2="10" stroke="#00ff88" stroke-width="3"/>
+                <circle cx="50" cy="8" r="3" fill="#00ff88"/>
+            </svg>
+
+            <!-- IOT DEVICE / DRONE -->
+            <svg class="space-element drone" style="width: 110px; height: 110px; top: 60%; left: 12%;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Main body -->
+                <circle cx="50" cy="50" r="18" fill="#00d4ff" stroke="#fff" stroke-width="2"/>
+                <!-- Propeller mounts -->
+                <line x1="20" y1="50" x2="80" y2="50" stroke="#666" stroke-width="2"/>
+                <line x1="50" y1="20" x2="50" y2="80" stroke="#666" stroke-width="2"/>
+                <!-- Propeller 1 -->
+                <circle cx="20" cy="50" r="15" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.7"/>
+                <!-- Propeller 2 -->
+                <circle cx="80" cy="50" r="15" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.7"/>
+                <!-- Propeller 3 -->
+                <circle cx="50" cy="20" r="15" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.7"/>
+                <!-- Propeller 4 -->
+                <circle cx="50" cy="80" r="15" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.7"/>
+                <!-- Sensor -->
+                <circle cx="50" cy="50" r="6" fill="#ffff00"/>
+            </svg>
+
+            <!-- PLANET -->
+            <svg class="space-element planet" style="width: 90px; height: 90px; bottom: 15%; right: 10%;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Planet -->
+                <circle cx="50" cy="50" r="45" fill="#ff9500" opacity="0.8"/>
+                <!-- Planet rings -->
+                <ellipse cx="50" cy="50" rx="60" ry="20" fill="none" stroke="#ffaa00" stroke-width="3" opacity="0.6"/>
+                <!-- Surface details -->
+                <circle cx="40" cy="40" r="8" fill="#ff6600" opacity="0.6"/>
+                <circle cx="60" cy="55" r="6" fill="#ff6600" opacity="0.6"/>
+            </svg>
+
+            <!-- TECH NODE / NETWORK -->
+            <svg class="space-element" style="width: 100px; height: 100px; bottom: 25%; left: 8%; animation: float 10s ease-in-out infinite;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Central node -->
+                <circle cx="50" cy="50" r="12" fill="#00ff88" stroke="#fff" stroke-width="2"/>
+                <!-- Connected nodes -->
+                <circle cx="30" cy="30" r="8" fill="#00d4ff" stroke="#fff" stroke-width="1"/>
+                <circle cx="70" cy="30" r="8" fill="#00d4ff" stroke="#fff" stroke-width="1"/>
+                <circle cx="30" cy="70" r="8" fill="#00d4ff" stroke="#fff" stroke-width="1"/>
+                <circle cx="70" cy="70" r="8" fill="#00d4ff" stroke="#fff" stroke-width="1"/>
+                <!-- Connection lines -->
+                <line x1="50" y1="50" x2="30" y2="30" stroke="#00ff88" stroke-width="1" opacity="0.6"/>
+                <line x1="50" y1="50" x2="70" y2="30" stroke="#00ff88" stroke-width="1" opacity="0.6"/>
+                <line x1="50" y1="50" x2="30" y2="70" stroke="#00ff88" stroke-width="1" opacity="0.6"/>
+                <line x1="50" y1="50" x2="70" y2="70" stroke="#00ff88" stroke-width="1" opacity="0.6"/>
+            </svg>
 
             <div class="hero-content">
-                <h1>Transform Your Business with Quantum Technology</h1>
-                <p>Enterprise-grade solutions in training, AI automation, agriculture, and STEM education</p>
+                <h1 data-translate="hero-title">Transform Your Business with Quantum Technology</h1>
+                <p data-translate="hero-subtitle">Enterprise-grade solutions in training, AI automation, agriculture, and STEM education</p>
             </div>
         </div>
         
@@ -1173,28 +1551,28 @@
             <div class="service-card" onclick="showPage('training')">
                 <div class="service-image"></div>
                 <div class="service-content">
-                    <h3>Professional Training</h3>
-                    <p>Expert-led training programs in PowerBI, Python, Arduino, and emerging technologies</p>
+                    <h3 data-translate="service-training">Professional Training</h3>
+                    <p data-translate="service-training-desc">Expert-led training programs in PowerBI, Python, Arduino, and emerging technologies</p>
                 </div>
             </div>
             <div class="service-card" onclick="showPage('ai')">
                 <div class="service-image"></div>
                 <div class="service-content">
-                    <h3>AI & Automation</h3>
-                    <p>Intelligent workflow automation and AI agent solutions for enterprise efficiency</p>
+                    <h3 data-translate="service-ai">AI & Automation</h3>
+                    <p data-translate="service-ai-desc">Intelligent workflow automation and AI agent solutions for enterprise efficiency</p>
                 </div>
             </div>
             <div class="service-card" onclick="showPage('agriculture')">
                 <div class="service-image"></div>
                 <div class="service-content">
-                    <h3>Agriculture & IoT</h3>
-                    <p>Smart farming systems with IoT sensors and real-time monitoring dashboards</p>
+                    <h3 data-translate="service-agriculture">Agriculture & IoT</h3>
+                    <p data-translate="service-agriculture-desc">Smart farming systems with IoT sensors and real-time monitoring dashboards</p>
                 </div>
             </div>
             <div class="service-card" onclick="showPage('stem')">
                 <div class="service-image"></div>
                 <div class="service-content">
-                    <h3>STEM Education</h3>
+                    <h3 data-translate="service-stem">STEM Education</h3>
                     <p>Hands-on learning programs building tomorrow's engineers and innovators</p>
                 </div>
             </div>
@@ -1204,7 +1582,7 @@
     <!-- TRAINING PAGE -->
     <div id="training" class="page">
         <div class="page-header">
-            <h1>Professional Training Programs</h1>
+            <h1 data-translate="training-title">Professional Training Programs</h1>
         </div>
 
         <div class="page-content">
@@ -1262,27 +1640,27 @@
             <!-- POWERBI COURSE -->
             <div id="course-powerbi" class="course-section active">
                 <div id="outline-powerbi-2days" class="outline-section active">
-                    <h3>PowerBI 2-Day Training Intensive</h3>
-                    <p><strong>Ideal for:</strong> Quick upskilling and intensive hands-on practical experience</p>
+                    <h3 data-translate="powerbi-2day-title">PowerBI 2-Day Training Intensive</h3>
+                    <p><strong data-translate="strong-ideal">Ideal for:</strong> <span data-translate="powerbi-2day-ideal">Quick upskilling and intensive hands-on practical experience</span></p>
                     
-                    <h4>Day 1: Foundation & Core Skills</h4>
+                    <h4 data-translate="powerbi-day1">Day 1: Foundation & Core Skills</h4>
                     <ul>
-                        <li>Morning: PowerBI introduction, interface fundamentals & data source setup (2 hours)</li>
-                        <li>Midday: Data modeling and visualization basics with interactive lab (2.5 hours)</li>
-                        <li>Afternoon: Q&A session, group discussion & recap (1 hour)</li>
+                        <li data-translate="powerbi-day1-morning">Morning: PowerBI introduction, interface fundamentals & data source setup (2 hours)</li>
+                        <li data-translate="powerbi-day1-midday">Midday: Data modeling and visualization basics with interactive lab (2.5 hours)</li>
+                        <li data-translate="powerbi-day1-afternoon">Afternoon: Q&A session, group discussion & recap (1 hour)</li>
                     </ul>
                     
-                    <h4>Day 2: Advanced Features & Certification</h4>
+                    <h4 data-translate="powerbi-day2">Day 2: Advanced Features & Certification</h4>
                     <ul>
-                        <li>Morning: Advanced DAX formulas and real-world applications (2.5 hours)</li>
-                        <li>Afternoon: Dashboard creation capstone project and presentations (2 hours)</li>
-                        <li>Closing: Assessment, certification & career pathways (0.5 hour)</li>
+                        <li data-translate="powerbi-day2-morning">Morning: Advanced DAX formulas and real-world applications (2.5 hours)</li>
+                        <li data-translate="powerbi-day2-afternoon">Afternoon: Dashboard creation capstone project and presentations (2 hours)</li>
+                        <li data-translate="powerbi-day2-closing">Closing: Assessment, certification & career pathways (0.5 hour)</li>
                     </ul>
                 </div>
 
                 <!-- Sample Dashboard Section -->
                 <div style="margin: 3rem 0; animation: fadeInUp 0.7s ease-out;">
-                    <h3 style="color: #0f0a1a; margin-bottom: 2rem; font-size: 1.8rem; font-weight: 800;">
+                    <h3 style="color: #0f0a1a; margin-bottom: 2rem; font-size: 1.8rem; font-weight: 800;" data-translate="what-create">
                         <span style="background: linear-gradient(135deg, #ff9500 0%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">What You'll Create</span>
                     </h3>
                     
@@ -1317,7 +1695,7 @@
 
                 <!-- Excel to PowerBI Transformation -->
                 <div style="margin: 3rem 0;">
-                    <h3 style="color: #0f0a1a; margin-bottom: 2.5rem; font-size: 1.8rem; font-weight: 800; text-align: center;">
+                    <h3 style="color: #0f0a1a; margin-bottom: 2.5rem; font-size: 1.8rem; font-weight: 800; text-align: center;" data-translate="excel-transform">
                         <span style="background: linear-gradient(135deg, #ff9500 0%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Excel to PowerBI Transformation</span>
                     </h3>
                     
@@ -1498,8 +1876,8 @@
             <!-- PYTHON COURSE -->
             <div id="course-python" class="course-section">
                 <div id="outline-python-3days" class="outline-section active">
-                    <h3>Python 3-Day Training Intensive</h3>
-                    <p><strong>Ideal for:</strong> Comprehensive Python programming fundamentals with hands-on practice</p>
+                    <h3 data-translate="python-3day-title">Python 3-Day Training Intensive</h3>
+                    <p><strong data-translate="strong-ideal">Ideal for:</strong> <span data-translate="python-3day-ideal">Comprehensive Python programming fundamentals with hands-on practice</span></p>
                     
                     <h4>Day 1: Python Fundamentals & Basics</h4>
                     <ul>
@@ -1591,30 +1969,30 @@
 
             <!-- ENROLLMENT FORM -->
             <div class="form-container">
-                <h3>Enroll Now</h3>
+                <h3 data-translate="enrollment-form">Enroll Now</h3>
                 <form id="enrollmentForm" onsubmit="submitForm(event)">
                     <div class="form-group">
-                        <label for="name">Full Name *</label>
+                        <label for="name" data-translate="name">Full Name *</label>
                         <input type="text" id="name" name="name" placeholder="Your full name" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email Address *</label>
+                        <label for="email" data-translate="email">Email Address *</label>
                         <input type="email" id="email" name="email" placeholder="your.email@company.com" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="phone">Phone Number *</label>
+                        <label for="phone" data-translate="phone">Phone Number *</label>
                         <input type="tel" id="phone" name="phone" placeholder="+60 12-345 6789" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="address">Address *</label>
+                        <label for="address" data-translate="address">Address *</label>
                         <textarea id="address" name="address" rows="3" placeholder="Street address, city, state" required></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="course">Training Course *</label>
+                        <label for="course" data-translate="course">Training Course *</label>
                         <select id="course" name="course" required>
                             <option value="">-- Select Course --</option>
                             <option value="PowerBI">PowerBI Fundamentals (2-Day)</option>
@@ -1624,7 +2002,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Training Format *</label>
+                        <label data-translate="format">Training Format *</label>
                         <div class="radio-group">
                             <label>
                                 <input type="radio" name="format" value="Face-to-Face" required> Face-to-Face
@@ -1636,7 +2014,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="duration">Training Duration *</label>
+                        <label for="duration" data-translate="duration">Training Duration *</label>
                         <select id="duration" name="duration" required>
                             <option value="">Select Duration</option>
                             <option value="2-Day" id="opt-2day" style="display:none;">2-Day Program</option>
@@ -1645,7 +2023,7 @@
                         </select>
                     </div>
 
-                    <button type="submit">Complete Enrollment</button>
+                    <button type="submit" data-translate="submit">Complete Enrollment</button>
                     <div id="successMessage" class="success-message">
                         <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">✓ Enrollment Confirmed!</div>
                         <div id="successDetails" style="font-size: 0.95rem; opacity: 0.95;"></div>
@@ -1657,7 +2035,7 @@
 
     <!-- AI PAGE -->
     <div id="ai" class="page">
-        <div class="page-header"><h1>AI & Automation Solutions</h1></div>
+        <div class="page-header"><h1 data-translate="ai-title">AI & Automation Solutions</h1></div>
         <div class="page-content">
             <div class="content-section">
                 <h2>Intelligent Workflow Automation</h2>
@@ -1892,7 +2270,7 @@
         </div>
     </div>
     <div id="agriculture" class="page">
-        <div class="page-header"><h1>Agriculture & IoT Solutions</h1></div>
+        <div class="page-header"><h1 data-translate="agriculture-title">Agriculture & IoT Solutions</h1></div>
         <div class="page-content">
             <div class="content-section">
                 <h2>Smart Agriculture Systems</h2>
@@ -1927,7 +2305,7 @@
 
     <!-- STEM PAGE -->
     <div id="stem" class="page">
-        <div class="page-header"><h1>STEM Education Programs</h1></div>
+        <div class="page-header"><h1 data-translate="stem-title">STEM Education Programs</h1></div>
         <div class="page-content">
             <div class="content-section">
                 <h2>Hands-On Learning for Tomorrow's Innovators</h2>
@@ -2134,12 +2512,142 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Quantum Technology. All rights reserved.</p>
-        <p>📍 Petaling Jaya, Selangor, Malaysia</p>
-        <p style="margin-top: 1.5rem; opacity: 0.8; font-size: 0.9rem;">Transforming Ideas into Innovation</p>
+        <p data-translate="footer">&copy; 2024 Quantum Technology. All rights reserved.</p>
+        <p data-translate="location">📍 Petaling Jaya, Selangor, Malaysia</p>
+        <p style="margin-top: 1.5rem; opacity: 0.8; font-size: 0.9rem;" data-translate="tagline">Transforming Ideas into Innovation</p>
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.85rem; opacity: 0.7;">
+            👥 Visitors: <span id="visitorCount" style="font-weight: 700; color: #00ffcc;">0</span>
+        </div>
     </footer>
 
     <script>
+        // LANGUAGE SYSTEM
+        let currentLanguage = localStorage.getItem('language') || 'en';
+
+        const translations = {
+            'hero-title': { en: 'Transform Your Business with Quantum Technology', ms: 'Ubahkan Bisnis Anda dengan Teknologi Quantum' },
+            'hero-subtitle': { en: 'Enterprise-grade solutions in training, AI automation, agriculture, and STEM education', ms: 'Solusi tingkat enterprise dalam pelatihan, otomasi AI, pertanian, dan pendidikan STEM' },
+            
+            'services-title': { en: 'Our Services', ms: 'Layanan Kami' },
+            'service-training': { en: 'Professional Training', ms: 'Pelatihan Profesional' },
+            'service-training-desc': { en: 'Expert-led training programs in PowerBI, Python, Arduino, and emerging technologies', ms: 'Program pelatihan dipimpin ahli dalam PowerBI, Python, Arduino, dan teknologi berkembang' },
+            'service-ai': { en: 'AI & Automation', ms: 'AI & Otomasi' },
+            'service-ai-desc': { en: 'Intelligent automation solutions to streamline your business processes', ms: 'Solusi otomasi cerdas untuk mengoptimalkan proses bisnis Anda' },
+            'service-agriculture': { en: 'Agriculture & IoT', ms: 'Pertanian & IoT' },
+            'service-agriculture-desc': { en: 'Smart farming solutions powered by IoT sensors and data analytics', ms: 'Solusi pertanian pintar dengan sensor IoT dan analitik data' },
+            'service-stem': { en: 'STEM Education', ms: 'Pendidikan STEM' },
+            'service-stem-desc': { en: 'Next-generation learning programs for students and professionals', ms: 'Program pembelajaran generasi berikutnya untuk siswa dan profesional' },
+            
+            'training-title': { en: 'Professional Training Programs', ms: 'Program Pelatihan Profesional' },
+            'powerbidesc': { en: 'Master data visualization and business intelligence', ms: 'Kuasai visualisasi data dan intelijen bisnis' },
+            'pythondesc': { en: 'Learn Python programming from basics to advanced applications', ms: 'Pelajari pemrograman Python dari dasar hingga aplikasi lanjutan' },
+            'comingsoon': { en: 'Coming Soon', ms: 'Segera Hadir' },
+            
+            'enrollment-form': { en: 'Enrollment Form', ms: 'Formulir Pendaftaran' },
+            'name': { en: 'Full Name', ms: 'Nama Lengkap' },
+            'email': { en: 'Email Address', ms: 'Alamat Email' },
+            'phone': { en: 'Phone Number', ms: 'Nomor Telepon' },
+            'address': { en: 'Address', ms: 'Alamat' },
+            'course': { en: 'Select Course', ms: 'Pilih Kursus' },
+            'format': { en: 'Training Format', ms: 'Format Pelatihan' },
+            'duration': { en: 'Duration', ms: 'Durasi' },
+            'online': { en: 'Online', ms: 'Online' },
+            'offline': { en: 'In-Person', ms: 'Tatap Muka' },
+            'hybrid': { en: 'Hybrid', ms: 'Hybrid' },
+            'submit': { en: 'Enroll Now', ms: 'Daftar Sekarang' },
+            
+            'ai-title': { en: 'AI & Automation Solutions', ms: 'Solusi AI & Otomasi' },
+            'ai-subtitle': { en: 'Custom AI agents and automation systems for your business', ms: 'Agen AI khusus dan sistem otomasi untuk bisnis Anda' },
+            
+            'agriculture-title': { en: 'Agriculture & IoT Solutions', ms: 'Solusi Pertanian & IoT' },
+            'agriculture-subtitle': { en: 'Smart farming with IoT sensors and intelligent analytics', ms: 'Pertanian pintar dengan sensor IoT dan analitik cerdas' },
+            
+            'stem-title': { en: 'STEM Education', ms: 'Pendidikan STEM' },
+            'stem-subtitle': { en: 'Inspiring the next generation of innovators', ms: 'Menginspirasi generasi inovator berikutnya' },
+            
+            'footer': { en: '© 2024 Quantum Technology. All rights reserved.', ms: '© 2024 Quantum Technology. Semua hak dilindungi.' },
+            'location': { en: '📍 Petaling Jaya, Selangor, Malaysia', ms: '📍 Petaling Jaya, Selangor, Malaysia' },
+            'tagline': { en: 'Transforming Ideas into Innovation', ms: 'Mengubah Ide menjadi Inovasi' },
+            
+            // PowerBI Course Outline
+            'powerbi-2day-title': { en: 'PowerBI 2-Day Training Intensive', ms: 'Pelatihan Intensif PowerBI 2 Hari' },
+            'powerbi-2day-ideal': { en: 'Ideal for: Quick upskilling and intensive hands-on practical experience', ms: 'Ideal untuk: Peningkatan keterampilan cepat dan pengalaman praktis intensif' },
+            'powerbi-day1': { en: 'Day 1: Foundation & Core Skills', ms: 'Hari 1: Fondasi & Keterampilan Inti' },
+            'powerbi-day1-morning': { en: 'Morning: PowerBI introduction, interface fundamentals & data source setup (2 hours)', ms: 'Pagi: Pengenalan PowerBI, dasar antarmuka & pengaturan sumber data (2 jam)' },
+            'powerbi-day1-midday': { en: 'Midday: Data modeling and visualization basics with interactive lab (2.5 hours)', ms: 'Siang: Dasar pemodelan data dan visualisasi dengan lab interaktif (2,5 jam)' },
+            'powerbi-day1-afternoon': { en: 'Afternoon: Q&A session, group discussion & recap (1 hour)', ms: 'Sore: Sesi Q&A, diskusi kelompok & ringkasan (1 jam)' },
+            'powerbi-day2': { en: 'Day 2: Advanced Features & Certification', ms: 'Hari 2: Fitur Lanjutan & Sertifikasi' },
+            'powerbi-day2-morning': { en: 'Morning: Advanced DAX formulas and real-world applications (2.5 hours)', ms: 'Pagi: Formula DAX lanjutan dan aplikasi dunia nyata (2,5 jam)' },
+            'powerbi-day2-afternoon': { en: 'Afternoon: Dashboard creation capstone project and presentations (2 hours)', ms: 'Sore: Proyek capstone pembuatan dashboard dan presentasi (2 jam)' },
+            'powerbi-day2-closing': { en: 'Closing: Assessment, certification & career pathways (0.5 hour)', ms: 'Penutup: Penilaian, sertifikasi & jalur karir (0,5 jam)' },
+            
+            'what-create': { en: 'What You\'ll Create', ms: 'Apa yang Akan Anda Buat' },
+            'excel-transform': { en: 'Excel to PowerBI Transformation', ms: 'Transformasi Excel ke PowerBI' },
+            'excel-to-powerbi': { en: 'Excel to PowerBI: From Static Spreadsheets to Interactive Dashboards', ms: 'Excel ke PowerBI: Dari Spreadsheet Statis ke Dashboard Interaktif' },
+            
+            // Python Course Outline
+            'python-3day-title': { en: 'Python 3-Day Programming Bootcamp', ms: 'Bootcamp Pemrograman Python 3 Hari' },
+            'python-3day-ideal': { en: 'Ideal for: Beginners and intermediate learners seeking hands-on experience', ms: 'Ideal untuk: Pemula dan pelajar tingkat menengah yang mencari pengalaman praktis' },
+            'python-day1': { en: 'Day 1: Python Fundamentals', ms: 'Hari 1: Dasar-dasar Python' },
+            'python-day1-morning': { en: 'Morning: Python setup, syntax, variables & data types (2.5 hours)', ms: 'Pagi: Pengaturan Python, sintaks, variabel & tipe data (2,5 jam)' },
+            'python-day1-afternoon': { en: 'Afternoon: Control flow, loops & functions with coding exercises (2.5 hours)', ms: 'Sore: Alur kontrol, loop & fungsi dengan latihan coding (2,5 jam)' },
+            'python-day2': { en: 'Day 2: Data Structures & Libraries', ms: 'Hari 2: Struktur Data & Perpustakaan' },
+            'python-day2-morning': { en: 'Morning: Lists, dictionaries, tuples & file handling (2 hours)', ms: 'Pagi: List, kamus, tupel & penanganan file (2 jam)' },
+            'python-day2-afternoon': { en: 'Afternoon: Pandas, NumPy & data manipulation practical lab (3 hours)', ms: 'Sore: Pandas, NumPy & lab praktis manipulasi data (3 jam)' },
+            'python-day3': { en: 'Day 3: Real-World Applications & Projects', ms: 'Hari 3: Aplikasi Dunia Nyata & Proyek' },
+            'python-day3-morning': { en: 'Morning: Web scraping basics and API integration (2.5 hours)', ms: 'Pagi: Dasar web scraping dan integrasi API (2,5 jam)' },
+            'python-day3-afternoon': { en: 'Afternoon: Capstone project development, presentations & Q&A (2.5 hours)', ms: 'Sore: Pengembangan proyek capstone, presentasi & tanya jawab (2,5 jam)' },
+            
+            'strong-ideal': { en: 'Ideal for:', ms: 'Ideal untuk:' },
+
+        };
+
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-btn[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+            
+            // Apply translations
+            applyTranslations();
+        }
+
+        function applyTranslations() {
+            // Translate nav items
+            document.querySelectorAll('nav a').forEach(link => {
+                const enText = link.getAttribute('data-en');
+                const msText = link.getAttribute('data-ms');
+                if (enText && msText) {
+                    link.textContent = currentLanguage === 'en' ? enText : msText;
+                }
+            });
+
+            // Translate elements with data-translate attribute
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[key]) {
+                    el.textContent = translations[key][currentLanguage];
+                }
+            });
+
+            // Translate placeholders
+            document.querySelectorAll('[data-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-placeholder');
+                if (translations[key]) {
+                    el.placeholder = translations[key][currentLanguage];
+                }
+            });
+        }
+
+        // Initialize language on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-btn[onclick="switchLanguage('${currentLanguage}')"]`).classList.add('active');
+            applyTranslations();
+        });
+
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
@@ -2654,8 +3162,171 @@ print("100 / 4 =", calculate(100, 4, "/"))`,
                 updateBarChart();
                 updatePieChart();
                 updateKPIValues();
+                initializeChatbot();
+                initializeVisitorCounter();
             }, 1000);
         });
-    </script>
-</body>
+
+        // CHATBOT FUNCTIONALITY
+        const chatbotResponses = {
+            'en': {
+                'greeting': [
+                    "Hello! 👋 Welcome to Quantum Technology. How can I help you today?",
+                    "Hi there! 😊 I'm the Quantum Assistant. What can I do for you?"
+                ],
+                'training': "We offer professional training in PowerBI, Python, Arduino, and emerging technologies. Which course interests you?",
+                'ai': "Our AI & Automation solutions include custom AI agents, workflow automation, and intelligent task automation. Would you like to know more?",
+                'agriculture': "Our Agriculture & IoT solutions feature smart farming systems with IoT sensors and real-time monitoring dashboards.",
+                'stem': "We provide hands-on STEM education programs for students aged 10-20, building tomorrow's engineers and innovators.",
+                'pricing': "For specific pricing, please contact our sales team or fill out an inquiry form on our website.",
+                'contact': "You can reach us at our office in Petaling Jaya, Selangor, Malaysia. You can also fill out our inquiry forms on the website.",
+                'enrollment': "You can enroll in our courses directly through the Training page. Select your preferred course, format, and duration.",
+                'default': "I'm here to help! You can ask me about our training programs, AI solutions, agriculture tech, STEM education, pricing, or how to contact us."
+            },
+            'ms': {
+                'greeting': [
+                    "Halo! 👋 Selamat datang ke Teknologi Quantum. Bagaimana saya dapat membantu Anda hari ini?",
+                    "Halo! 😊 Saya adalah Asisten Quantum. Apa yang dapat saya lakukan untuk Anda?"
+                ],
+                'training': "Kami menawarkan pelatihan profesional dalam PowerBI, Python, Arduino, dan teknologi berkembang. Kursus mana yang Anda minati?",
+                'ai': "Solusi AI & Otomasi kami mencakup agen AI khusus, otomasi alur kerja, dan otomasi tugas cerdas. Ingin tahu lebih lanjut?",
+                'agriculture': "Solusi Pertanian & IoT kami menampilkan sistem pertanian pintar dengan sensor IoT dan dashboard pemantauan real-time.",
+                'stem': "Kami menyediakan program pendidikan STEM praktis untuk siswa berusia 10-20 tahun, membangun insinyur dan inovator masa depan.",
+                'pricing': "Untuk harga spesifik, hubungi tim penjualan kami atau isi formulir pertanyaan di situs web kami.",
+                'contact': "Anda dapat menghubungi kami di kantor kami di Petaling Jaya, Selangor, Malaysia. Anda juga dapat mengisi formulir pertanyaan di situs web.",
+                'enrollment': "Anda dapat mendaftar di kursus kami langsung melalui halaman Pelatihan. Pilih kursus, format, dan durasi yang Anda inginkan.",
+                'default': "Saya di sini untuk membantu! Anda dapat menanyakan tentang program pelatihan kami, solusi AI, teknologi pertanian, pendidikan STEM, harga, atau cara menghubungi kami."
+            }
+        };
+
+        const chatbotKeywords = {
+            'en': {
+                'training': ['training', 'course', 'learn', 'enroll', 'program', 'powerbi', 'python', 'arduino'],
+                'ai': ['ai', 'automation', 'agent', 'workflow', 'intelligent'],
+                'agriculture': ['agriculture', 'farming', 'iot', 'smart farm'],
+                'stem': ['stem', 'education', 'student'],
+                'pricing': ['price', 'cost', 'fee', 'how much'],
+                'contact': ['contact', 'reach', 'call', 'email', 'address'],
+                'enrollment': ['enroll', 'register', 'join', 'sign up']
+            },
+            'ms': {
+                'training': ['pelatihan', 'kursus', 'belajar', 'daftar', 'program', 'powerbi', 'python', 'arduino'],
+                'ai': ['ai', 'otomasi', 'agen', 'alur kerja', 'cerdas'],
+                'agriculture': ['pertanian', 'farming', 'iot', 'smart farm'],
+                'stem': ['stem', 'pendidikan', 'siswa'],
+                'pricing': ['harga', 'biaya', 'berapa'],
+                'contact': ['hubungi', 'kontak', 'email', 'alamat'],
+                'enrollment': ['daftar', 'mendaftar', 'bergabung']
+            }
+        };
+
+        let chatHistory = [];
+
+        function toggleChatbot() {
+            const container = document.getElementById('chatbotContainer');
+            const button = document.getElementById('chatbotToggle');
+            container.classList.toggle('active');
+            if (container.classList.contains('active') && chatHistory.length === 0) {
+                addBotMessage(chatbotResponses[currentLanguage]['greeting'][0]);
+            }
+        }
+
+        function closeChatbot() {
+            document.getElementById('chatbotContainer').classList.remove('active');
+        }
+
+        function addBotMessage(text) {
+            const messagesDiv = document.getElementById('chatbotMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message message-bot';
+            messageDiv.innerHTML = `<div class="message-content">${text}</div>`;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function addUserMessage(text) {
+            const messagesDiv = document.getElementById('chatbotMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message message-user';
+            messageDiv.innerHTML = `<div class="message-content">${text}</div>`;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function getChatbotResponse(userInput) {
+            const input = userInput.toLowerCase().trim();
+            const lang = currentLanguage;
+            const keywords = chatbotKeywords[lang];
+
+            for (const [category, words] of Object.entries(keywords)) {
+                if (words.some(word => input.includes(word))) {
+                    return chatbotResponses[lang][category];
+                }
+            }
+            return chatbotResponses[lang]['default'];
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatbotInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+
+            addUserMessage(message);
+            input.value = '';
+
+            // Simulate typing delay
+            setTimeout(() => {
+                const response = getChatbotResponse(message);
+                addBotMessage(response);
+            }, 500);
+        }
+
+        function handleChatInput(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function initializeChatbot() {
+            document.getElementById('chatbot-title').textContent = currentLanguage === 'en' ? 'Quantum Assistant' : 'Asisten Quantum';
+        }
+
+        // VISITOR COUNTER
+        function initializeVisitorCounter() {
+            let visitCount = localStorage.getItem('quantum-visitor-count');
+            
+            if (!visitCount) {
+                visitCount = 1;
+            } else {
+                visitCount = parseInt(visitCount) + 1;
+            }
+            
+            localStorage.setItem('quantum-visitor-count', visitCount);
+            document.getElementById('visitorCount').textContent = visitCount;
+        }
+
+        // Update chatbot when language changes
+        const originalSwitchLanguage = switchLanguage;
+        switchLanguage = function(lang) {
+            originalSwitchLanguage(lang);
+            initializeChatbot();
+        };
+    <!-- CHATBOT WIDGET -->
+    <div class="chatbot-widget">
+        <button class="chatbot-button" id="chatbotToggle" onclick="toggleChatbot()">💬</button>
+        <div class="chatbot-container" id="chatbotContainer">
+            <div class="chatbot-header">
+                <h3 id="chatbot-title">Quantum Assistant</h3>
+                <button class="chatbot-close" onclick="closeChatbot()">✕</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages"></div>
+            <div class="chatbot-input-area">
+                <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Type a message..." onkeypress="handleChatInput(event)">
+                <button class="chatbot-send" onclick="sendChatMessage()">📤</button>
+            </div>
+        </div>
+    </div>
+
+    </body>
 </html>
