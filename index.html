@@ -296,7 +296,7 @@
             animation: pulse 4s ease-in-out infinite, float 14s ease-in-out infinite;
         }
 
-        /* HERO SECTION --
+        /* HERO SECTION */
 
         .hero-content {
             position: relative;
@@ -1147,6 +1147,7 @@
         <nav>
             <a onclick="showPage('home')">Home</a>
             <a onclick="showPage('training')">Training</a>
+            <a onclick="showPage('dashboards')">Dashboards</a>
             <a onclick="showPage('ai')">AI</a>
             <a onclick="showPage('agriculture')">Agriculture</a>
             <a onclick="showPage('stem')">STEM</a>
@@ -1210,7 +1211,7 @@
         <div class="page-content">
             <!-- COURSE SELECTION -->
             <div class="course-toggle-container">
-                <button class="toggle-btn active" onclick="selectCourse('powerbi')">
+                <button class="toggle-btn active" onclick="selectCourse('powerbi', this)">
                     <svg class="course-btn-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <!-- Official Power BI Logo: Bar Chart -->
                         <defs>
@@ -1230,7 +1231,7 @@
                     <span class="course-btn-title">PowerBI</span>
                     <span class="course-btn-subtitle">2 Days</span>
                 </button>
-                <button class="toggle-btn" onclick="selectCourse('python')">
+                <button class="toggle-btn" onclick="selectCourse('python', this)">
                     <svg class="course-btn-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <!-- Official Python Logo: Blue and Yellow Interlocking Snakes -->
                         <defs>
@@ -1252,7 +1253,7 @@
                     <span class="course-btn-title">Python</span>
                     <span class="course-btn-subtitle">3 Days</span>
                 </button>
-                <button class="toggle-btn" onclick="selectCourse('coming')">
+                <button class="toggle-btn" onclick="selectCourse('coming', this)">
                     <span class="course-btn-icon">✨</span>
                     <span class="course-btn-title">Coming Soon</span>
                     <span class="course-btn-subtitle">More Courses</span>
@@ -1493,6 +1494,13 @@
                         <li style="margin-bottom: 1rem; color: #3a3a5a; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>Impress stakeholders with professional visualizations</li>
                     </ul>
                 </div>
+
+                <!-- Cross-link to Dashboard Service -->
+                <div style="margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, #fff9f0 0%, #ffe6f0 100%); border-radius: 12px; border: 2px solid #ff9500; text-align: center;">
+                    <h4 style="color: #0f0a1a; font-size: 1.3rem; font-weight: 800; margin: 0 0 0.6rem;">Don't have time to learn?</h4>
+                    <p style="color: #5a5a7a; margin: 0 0 1.5rem; font-size: 0.95rem;">Let our experts build your PowerBI dashboard for you.</p>
+                    <button onclick="showPage('dashboards')" style="width: auto; padding: 1rem 2.5rem; background: linear-gradient(135deg, #ff9500 0%, #ff006e 100%);">📊 View Dashboard Creation Service</button>
+                </div>
             </div>
 
             <!-- PYTHON COURSE -->
@@ -1652,6 +1660,167 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD SERVICE PAGE -->
+    <div id="dashboards" class="page">
+        <div class="page-header"><h1>PowerBI Dashboard Creation</h1></div>
+        <div class="page-content">
+                <!-- POWERBI DASHBOARD CREATION SERVICE -->
+                <div id="dashboard-service" style="margin: 1rem 0 4rem;">
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.8rem;">
+                            <span style="background: linear-gradient(135deg, #ff9500 0%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">PowerBI Dashboard Creation Service</span>
+                        </h3>
+                        <p style="color: #5a5a7a; font-size: 1.1rem; max-width: 640px; margin: 0 auto 2.5rem;">Don't have time to learn? We'll build it for you. Professional dashboards designed, built, and delivered by our experts.</p>
+                    </div>
+
+                    <!-- Pricing Tiers -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3.5rem;">
+                        <!-- Starter -->
+                        <div style="background: white; padding: 2.5rem 2rem; border-radius: 14px; border: 2px solid #e8ecf1; border-top: 6px solid #ff9500; box-shadow: 0 8px 24px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+                            <h4 style="color: #0f0a1a; font-size: 1.4rem; font-weight: 800; margin: 0 0 0.5rem;">Starter</h4>
+                            <p style="color: #ff9500; font-weight: 800; font-size: 1.05rem; margin: 0 0 1.5rem;">Contact for Quote</p>
+                            <ul style="list-style: none; margin: 0 0 1.5rem; padding: 0; flex-grow: 1;">
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>1 professional dashboard</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>Up to 2 data sources (Excel/CSV)</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>Up to 5 visuals & KPI cards</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>1 revision round</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>5-day delivery</li>
+                            </ul>
+                            <button onclick="selectDashboardPackage('Starter')" style="background: white; color: #ff9500; border: 2px solid #ff9500; box-shadow: none; padding: 0.9rem;">Choose Starter</button>
+                        </div>
+
+                        <!-- Professional (highlighted) -->
+                        <div style="background: linear-gradient(180deg, #fff9f0 0%, #ffffff 100%); padding: 2.5rem 2rem; border-radius: 14px; border: 2px solid #ff006e; border-top: 6px solid #ff006e; box-shadow: 0 16px 40px rgba(255, 0, 110, 0.15); display: flex; flex-direction: column; position: relative;">
+                            <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%); color: white; font-size: 0.75rem; font-weight: 800; padding: 0.3rem 1.2rem; border-radius: 20px; letter-spacing: 0.5px;">MOST POPULAR</div>
+                            <h4 style="color: #0f0a1a; font-size: 1.4rem; font-weight: 800; margin: 0 0 0.5rem;">Professional</h4>
+                            <p style="color: #ff006e; font-weight: 800; font-size: 1.05rem; margin: 0 0 1.5rem;">Contact for Quote</p>
+                            <ul style="list-style: none; margin: 0 0 1.5rem; padding: 0; flex-grow: 1;">
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff006e; font-weight: 900;">✓</span>Up to 3 dashboards</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff006e; font-weight: 900;">✓</span>Up to 5 data sources incl. databases</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff006e; font-weight: 900;">✓</span>Custom DAX measures & calculations</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff006e; font-weight: 900;">✓</span>3 revision rounds</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff006e; font-weight: 900;">✓</span>10-day delivery</li>
+                            </ul>
+                            <button onclick="selectDashboardPackage('Professional')" style="padding: 0.9rem;">Choose Professional</button>
+                        </div>
+
+                        <!-- Enterprise -->
+                        <div style="background: white; padding: 2.5rem 2rem; border-radius: 14px; border: 2px solid #e8ecf1; border-top: 6px solid #8338ec; box-shadow: 0 8px 24px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+                            <h4 style="color: #0f0a1a; font-size: 1.4rem; font-weight: 800; margin: 0 0 0.5rem;">Enterprise</h4>
+                            <p style="color: #8338ec; font-weight: 800; font-size: 1.05rem; margin: 0 0 1.5rem;">Contact for Quote</p>
+                            <ul style="list-style: none; margin: 0 0 1.5rem; padding: 0; flex-grow: 1;">
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #8338ec; font-weight: 900;">✓</span>Unlimited dashboards</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #8338ec; font-weight: 900;">✓</span>Full data modeling & architecture</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #8338ec; font-weight: 900;">✓</span>Automated refresh setup</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #8338ec; font-weight: 900;">✓</span>Team training handover</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #8338ec; font-weight: 900;">✓</span>Ongoing support & maintenance</li>
+                            </ul>
+                            <button onclick="selectDashboardPackage('Enterprise')" style="background: white; color: #8338ec; border: 2px solid #8338ec; box-shadow: none; padding: 0.9rem;">Choose Enterprise</button>
+                        </div>
+                    </div>
+
+                    <!-- 5-Step Process Timeline -->
+                    <div style="background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%); padding: 3rem 2rem; border-radius: 16px; border: 2px solid #ffe4b5; margin-bottom: 3.5rem;">
+                        <h4 style="color: #0f0a1a; text-align: center; font-size: 1.4rem; font-weight: 800; margin: 0 0 2.5rem;">How It Works</h4>
+                        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+                            <div style="flex: 1; min-width: 150px; text-align: center;">
+                                <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #ff9500 0%, #f59e0b 100%); color: white; font-size: 1.3rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 16px rgba(255,149,0,0.3);">1</div>
+                                <h5 style="color: #0f0a1a; font-weight: 700; margin: 0 0 0.4rem; font-size: 1rem;">Consultation</h5>
+                                <p style="color: #6b7280; font-size: 0.85rem; margin: 0;">We discuss your goals & requirements</p>
+                            </div>
+                            <div style="flex: 1; min-width: 150px; text-align: center;">
+                                <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #ff6e00 0%, #ff9500 100%); color: white; font-size: 1.3rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 16px rgba(255,110,0,0.3);">2</div>
+                                <h5 style="color: #0f0a1a; font-weight: 700; margin: 0 0 0.4rem; font-size: 1rem;">Data Review</h5>
+                                <p style="color: #6b7280; font-size: 0.85rem; margin: 0;">We analyze your data sources & structure</p>
+                            </div>
+                            <div style="flex: 1; min-width: 150px; text-align: center;">
+                                <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #ff006e 0%, #ff0099 100%); color: white; font-size: 1.3rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 16px rgba(255,0,110,0.3);">3</div>
+                                <h5 style="color: #0f0a1a; font-weight: 700; margin: 0 0 0.4rem; font-size: 1rem;">Design & Build</h5>
+                                <p style="color: #6b7280; font-size: 0.85rem; margin: 0;">Our experts craft your dashboard</p>
+                            </div>
+                            <div style="flex: 1; min-width: 150px; text-align: center;">
+                                <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #a855f7 0%, #8338ec 100%); color: white; font-size: 1.3rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 16px rgba(131,56,236,0.3);">4</div>
+                                <h5 style="color: #0f0a1a; font-weight: 700; margin: 0 0 0.4rem; font-size: 1rem;">Review & Revise</h5>
+                                <p style="color: #6b7280; font-size: 0.85rem; margin: 0;">Your feedback shapes the final result</p>
+                            </div>
+                            <div style="flex: 1; min-width: 150px; text-align: center;">
+                                <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #8338ec 0%, #3a86ff 100%); color: white; font-size: 1.3rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 16px rgba(58,134,255,0.3);">5</div>
+                                <h5 style="color: #0f0a1a; font-weight: 700; margin: 0 0 0.4rem; font-size: 1rem;">Handover</h5>
+                                <p style="color: #6b7280; font-size: 0.85rem; margin: 0;">Delivery, walkthrough & documentation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Request Form -->
+                    <div style="background: white; padding: 3rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid #e8ecf1; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #ff9500, #ff006e);"></div>
+                        <h4 style="color: #0f0a1a; margin-bottom: 0.8rem; font-size: 1.5rem; font-weight: 800;">📊 Request Your Dashboard</h4>
+                        <p style="color: #5a5a7a; margin-bottom: 2rem; font-size: 0.95rem;">Tell us what you need and we'll get back to you with a proposal and quote within 24 hours.</p>
+
+                        <div id="dashboardSuccessMessage" style="background: #d4edda; color: #155724; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #28a745; margin-bottom: 1.5rem; display: none; font-size: 0.95rem;">
+                            <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">✓ Dashboard Request Submitted!</div>
+                            <div id="dashboardSuccessDetails" style="margin-bottom: 0.5rem;"></div>
+                            <div>Our team will contact you with a proposal within 24 hours.</div>
+                        </div>
+
+                        <form id="dashboardRequestForm" onsubmit="submitDashboardRequest(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div>
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Full Name *</label>
+                                <input type="text" name="name" placeholder="Your full name" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box;">
+                            </div>
+                            <div>
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Email Address *</label>
+                                <input type="email" name="email" placeholder="your.email@company.com" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box;">
+                            </div>
+                            <div>
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Company Name *</label>
+                                <input type="text" name="company" placeholder="Your company name" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box;">
+                            </div>
+                            <div>
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Phone Number *</label>
+                                <input type="tel" name="phone" placeholder="+60 12-345 6789" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box;">
+                            </div>
+                            <div>
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Package *</label>
+                                <select id="dashboardPackage" name="package" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; color: #0f0a1a; background: white; cursor: pointer; box-sizing: border-box;">
+                                    <option value="">-- Select package --</option>
+                                    <option value="Starter">Starter</option>
+                                    <option value="Professional">Professional</option>
+                                    <option value="Enterprise">Enterprise</option>
+                                    <option value="Not sure yet">Not sure yet — advise me</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Timeline *</label>
+                                <select name="timeline" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; color: #0f0a1a; background: white; cursor: pointer; box-sizing: border-box;">
+                                    <option value="">-- Select timeline --</option>
+                                    <option value="ASAP (within 1 week)">🔴 ASAP (within 1 week)</option>
+                                    <option value="Fast (2-3 weeks)">🟠 Fast (2-3 weeks)</option>
+                                    <option value="Normal (1-2 months)">🟡 Normal (1-2 months)</option>
+                                    <option value="Flexible (no rush)">🟢 Flexible (no rush)</option>
+                                </select>
+                            </div>
+                            <div style="grid-column: 1 / -1;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Data Sources *</label>
+                                <input type="text" name="data_sources" placeholder="e.g. Excel files, Google Sheets, SQL database, SAP..." required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box;">
+                            </div>
+                            <div style="grid-column: 1 / -1;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">KPIs & Metrics You Want to Track *</label>
+                                <textarea name="kpis" placeholder="e.g. Monthly revenue, sales by region, customer retention, inventory levels..." required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; min-height: 90px; box-sizing: border-box;"></textarea>
+                            </div>
+                            <div style="grid-column: 1 / -1;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Additional Notes</label>
+                                <textarea name="notes" placeholder="Anything else we should know? Branding requirements, sample dashboards you like, access constraints..." style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; min-height: 70px; box-sizing: border-box;"></textarea>
+                            </div>
+                            <div style="grid-column: 1 / -1;">
+                                <button type="submit" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, #ff9500 0%, #ff006e 100%); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer;">📊 Request Dashboard Proposal</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
         </div>
     </div>
 
@@ -2146,18 +2315,20 @@
             window.scrollTo(0, 0);
         }
 
-        function selectCourse(courseId) {
+        function selectCourse(courseId, btn) {
             // Hide all courses
             document.querySelectorAll('.course-section').forEach(c => c.classList.remove('active'));
             // Show selected course
             document.getElementById('course-' + courseId).classList.add('active');
             // Update course buttons
             document.querySelectorAll('.course-toggle-container .toggle-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
+            if (btn) {
+                btn.classList.add('active');
+            }
             window.scrollTo(0, document.querySelector('.page-content').offsetTop - 100);
         }
 
-        function toggleOutline(outlineId) {
+        function toggleOutline(outlineId, btn) {
             // Find all outline sections in the current course
             const currentCourse = document.querySelector('.course-section.active');
             const outlineSections = currentCourse.querySelectorAll('.outline-section');
@@ -2169,7 +2340,9 @@
             // Update duration buttons in current course
             const toggleBtns = currentCourse.querySelectorAll('.toggle-container .toggle-btn');
             toggleBtns.forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
+            if (btn) {
+                btn.classList.add('active');
+            }
         }
 
         function updateDurationOptions() {
@@ -2621,7 +2794,7 @@ print("100 / 4 =", calculate(100, 4, "/"))`,
             const example = pythonExamples[exampleId];
             if (example) {
                 // Display code with syntax highlighting
-                codeDisplay.innerHTML = example.code;
+                codeDisplay.textContent = example.code;
                 // Clear output until Run is clicked
                 outputDisplay.innerHTML = '<span style="color: #999;">// Click "Run Code" to see output</span>';
             }
@@ -2640,12 +2813,80 @@ print("100 / 4 =", calculate(100, 4, "/"))`,
 
             const example = pythonExamples[exampleId];
             outputDisplay.style.animation = 'fadeInUp 0.5s ease-out';
-            outputDisplay.innerHTML = example.output;
+            outputDisplay.textContent = example.output;
 
             // Remove animation class after it completes
             setTimeout(() => {
                 outputDisplay.style.animation = 'none';
             }, 500);
+        }
+
+        // Dashboard Service: pre-select package and scroll to request form
+        function selectDashboardPackage(packageName) {
+            const packageSelect = document.getElementById('dashboardPackage');
+            if (packageSelect) {
+                packageSelect.value = packageName;
+            }
+            document.getElementById('dashboardRequestForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Dashboard Request Form Submission
+        function submitDashboardRequest(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('dashboardRequestForm');
+            const successMessage = document.getElementById('dashboardSuccessMessage');
+
+            const formData = {
+                type: 'Dashboard Request',
+                name: form.elements['name'].value,
+                email: form.elements['email'].value,
+                company: form.elements['company'].value,
+                phone: form.elements['phone'].value,
+                package: form.elements['package'].value,
+                timeline: form.elements['timeline'].value,
+                data_sources: form.elements['data_sources'].value,
+                kpis: form.elements['kpis'].value,
+                notes: form.elements['notes'].value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            // Update success message with company and package
+            const dashboardSuccessDetails = document.getElementById('dashboardSuccessDetails');
+            dashboardSuccessDetails.innerHTML = `<strong>${formData.company}</strong> has requested a <strong>${formData.package}</strong> dashboard package`;
+
+            // Show success message immediately
+            successMessage.style.display = 'block';
+            form.reset();
+
+            // Scroll to success message
+            setTimeout(() => {
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+
+            const webhookUrl = 'https://script.google.com/macros/s/AKfycbwqouiCOtYUYGnwykZg6LrYlZO6f_5GBhkDwsgHy2jfZDLGp-TmyvavkdAF6d5aCCOq/exec';
+
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                signal: controller.signal
+            })
+            .then(response => response.json())
+            .then(data => {
+                clearTimeout(timeoutId);
+                console.log('✓ Dashboard request submitted:', data);
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.log('✓ Form submitted. Saving to Google Sheet...', error.message);
+            });
+
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 8000);
         }
 
         // Auto-start animations when page loads
