@@ -1,0 +1,2908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Technology - Enterprise Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            overflow-x: hidden;
+            background: #f8f9fa;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.9; }
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 30px rgba(0, 255, 220, 0.8)) drop-shadow(0 0 60px rgba(255, 0, 150, 0.4)); }
+            50% { filter: drop-shadow(0 0 50px rgba(0, 200, 255, 1)) drop-shadow(0 0 80px rgba(255, 100, 200, 0.6)); }
+        }
+
+        @keyframes rotate3d {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            100% { transform: rotateY(360deg) rotateX(10deg); }
+        }
+
+        .floating-shape {
+            position: absolute;
+            mix-blend-mode: screen;
+        }
+
+        .shape-1 {
+            width: 450px;
+            height: 450px;
+            background: linear-gradient(135deg, #ff0080 0%, #ff6e00 50%, #ffff00 100%);
+            border-radius: 50%;
+            top: -100px;
+            left: -150px;
+            filter: blur(70px);
+            animation: glow 6s ease-in-out infinite, float 15s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #00ffff 0%, #00aaff 50%, #5500ff 100%);
+            border-radius: 50%;
+            top: 30%;
+            right: -80px;
+            filter: blur(65px);
+            animation: glow 7s ease-in-out infinite reverse, float 14s ease-in-out infinite reverse;
+            opacity: 0.35;
+        }
+
+        .shape-3 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #ff00ff 0%, #ff0080 50%, #00ffff 100%);
+            border-radius: 50%;
+            bottom: -150px;
+            left: 10%;
+            filter: blur(80px);
+            animation: glow 5.5s ease-in-out infinite, float 18s ease-in-out infinite;
+            opacity: 0.25;
+        }
+
+        .shape-4 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #00ff88 0%, #00ffff 50%, #ffff00 100%);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            top: 20%;
+            left: 5%;
+            filter: blur(50px);
+            animation: pulse 4s ease-in-out infinite, float 16s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        .shape-5 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #ff6600 0%, #ffff00 50%, #00ffcc 100%);
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            bottom: 15%;
+            right: 15%;
+            filter: blur(55px);
+            animation: pulse 3.5s ease-in-out infinite reverse, float 17s ease-in-out infinite;
+            opacity: 0.32;
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 8px 32px rgba(255, 0, 110, 0.08);
+            backdrop-filter: blur(10px);
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: #1a1a2e;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff006e, #8338ec);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
+        }
+
+        nav a:hover {
+            color: white;
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 0, 110, 0.3);
+        }
+
+        nav a:hover::after {
+            width: 80%;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1050 25%, #2d0f5a 50%, #1a1050 75%, #0a0e27 100%);
+            color: white;
+            padding: 7rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, transparent 24%, rgba(0, 255, 220, 0.05) 25%, rgba(0, 255, 220, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 220, 0.05) 75%, rgba(0, 255, 220, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(180deg, transparent 24%, rgba(0, 255, 220, 0.05) 25%, rgba(0, 255, 220, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 220, 0.05) 75%, rgba(0, 255, 220, 0.05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            animation: slideGrid 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes slideGrid {
+            0% { background-position: 0 0, 25px 25px; }
+            100% { background-position: 50px 50px, 75px 75px; }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 0, 150, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 200, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 30%, rgba(100, 200, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.15;
+            mix-blend-mode: screen;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            border-radius: 50%;
+            top: 10%;
+            left: 5%;
+            filter: blur(40px);
+            animation: glow 6s ease-in-out infinite, float 15s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #8338ec, #3a86ff);
+            border-radius: 50%;
+            top: 60%;
+            right: 10%;
+            filter: blur(35px);
+            animation: glow 7s ease-in-out infinite reverse, float 12s ease-in-out infinite reverse;
+        }
+
+        .shape-3 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #ff006e, #3a86ff);
+            border-radius: 50%;
+            bottom: 5%;
+            right: 30%;
+            filter: blur(45px);
+            animation: glow 5s ease-in-out infinite, float 18s ease-in-out infinite;
+        }
+
+        .shape-4 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #3a86ff, #ff006e);
+            border-radius: 50%;
+            top: 40%;
+            left: 15%;
+            filter: blur(30px);
+            animation: pulse 4s ease-in-out infinite, float 14s ease-in-out infinite;
+        }
+
+        /* HERO SECTION */
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00ffcc 0%, #00ff88 100%);
+            color: #0f0a1a;
+            padding: 1.2rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 40px rgba(0, 255, 200, 0.4);
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            animation: bounceIn 0.8s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            background: #f0f4ff;
+        }
+
+        /* SERVICES GRID */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e8ecf1;
+            position: relative;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(255, 0, 110, 0.2);
+            border-color: #ff006e;
+        }
+
+        .service-card:hover .service-image {
+            animation: zoomImage 0.6s ease-out forwards;
+        }
+
+        @keyframes zoomImage {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .service-card:hover .service-content h3 {
+            color: #ff006e;
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .service-card:hover .service-content p {
+            animation: fadeInUp 0.5s ease-out 0.1s both;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:nth-child(1) .service-image { 
+            background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978');
+            background-color: #e3f2fd;
+        }
+        .service-card:nth-child(2) .service-image { 
+            background-image: url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01');
+            background-color: #f3e5f5;
+        }
+        .service-card:nth-child(3) .service-image { 
+            background-image: url('https://images.unsplash.com/photo-1574943320219-553eb213f72d');
+            background-color: #e8f5e9;
+        }
+        .service-card:nth-child(4) .service-image { 
+            background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97');
+            background-color: #fff3e0;
+        }
+
+        .service-content {
+            padding: 2.5rem;
+        }
+
+        .service-card h3 {
+            color: #0f0a1a;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: #5a5a7a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* PAGE CONTAINER */
+        .page {
+            display: none;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #0f0a1a 0%, #2d1b4e 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            top: -50px;
+            right: -50px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* TRAINING PAGE */
+        .page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* COURSE SELECTION */
+        .course-toggle-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin: 3rem auto;
+            padding: 0;
+            width: 100%;
+            max-width: 1100px;
+            animation: fadeInUp 0.7s ease-out;
+        }
+        
+        .course-toggle-container .toggle-btn {
+            padding: 2rem 1.5rem;
+            font-size: 1.15rem;
+            white-space: normal;
+            background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.25),
+                0 10px 20px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            font-weight: 700;
+            color: white;
+            transform: perspective(1000px) rotateX(0deg);
+        }
+
+        .course-toggle-container .toggle-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+            opacity: 1;
+            z-index: 1;
+            border-radius: 16px;
+            pointer-events: none;
+        }
+
+        .course-toggle-container .toggle-btn:hover {
+            transform: perspective(1000px) rotateX(5deg) translateY(-10px);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.3),
+                0 15px 30px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .course-toggle-container .toggle-btn.active {
+            color: white;
+            transform: perspective(1000px) rotateX(2deg);
+        }
+
+        /* PowerBI Course Button */
+        .course-toggle-container .toggle-btn:nth-child(1) {
+            background: linear-gradient(180deg, #ff9500 0%, #e68500 100%);
+            box-shadow: 
+                0 20px 40px rgba(255, 149, 0, 0.3),
+                0 10px 20px rgba(255, 149, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .course-toggle-container .toggle-btn:nth-child(1):hover {
+            box-shadow: 
+                0 30px 60px rgba(255, 149, 0, 0.4),
+                0 15px 30px rgba(255, 149, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .course-toggle-container .toggle-btn:nth-child(1) .course-btn-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Python Course Button */
+        .course-toggle-container .toggle-btn:nth-child(2) {
+            background: linear-gradient(180deg, #306598 0%, #2a5280 100%);
+            color: white;
+            box-shadow: 
+                0 20px 40px rgba(48, 101, 152, 0.3),
+                0 10px 20px rgba(48, 101, 152, 0.2),
+                inset 0 1px 0 rgba(255, 212, 59, 0.4);
+        }
+
+        .course-toggle-container .toggle-btn:nth-child(2):hover {
+            box-shadow: 
+                0 30px 60px rgba(48, 101, 152, 0.4),
+                0 15px 30px rgba(48, 101, 152, 0.3),
+                inset 0 1px 0 rgba(255, 212, 59, 0.5);
+        }
+
+        .course-toggle-container .toggle-btn:nth-child(2) .course-btn-subtitle {
+            color: #ffd43b;
+        }
+
+        /* Coming Soon Button */
+        .course-toggle-container .toggle-btn:nth-child(3) {
+            background: linear-gradient(180deg, #ff9500 0%, #e68500 100%);
+            box-shadow: 
+                0 20px 40px rgba(255, 149, 0, 0.3),
+                0 10px 20px rgba(255, 149, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .course-toggle-container .toggle-btn:nth-child(3):hover {
+            box-shadow: 
+                0 30px 60px rgba(255, 149, 0, 0.4),
+                0 15px 30px rgba(255, 149, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .course-toggle-container .toggle-btn:nth-child(3) .course-btn-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .course-btn-icon {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
+        }
+        
+        svg.course-btn-icon {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+            transition: filter 0.3s ease;
+        }
+        
+        .course-toggle-container .toggle-btn:hover svg.course-btn-icon {
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+        }
+
+        .course-btn-title {
+            font-size: 1.4rem;
+            font-weight: 900;
+            display: block;
+            letter-spacing: 0.3px;
+        }
+
+        /* Chart Animations */
+        @keyframes barGrowth {
+            from { height: 0; opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pieFill {
+            from { stroke-dasharray: 0 314; }
+            to { stroke-dasharray: 78.5 314; }
+        }
+
+        @keyframes counterUp {
+            from { --num: 0; }
+            to { --num: 100; }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+            50% { box-shadow: 0 12px 30px rgba(255, 149, 0, 0.15); }
+        }
+
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .course-section svg rect {
+            animation: barGrowth 0.8s ease-out forwards;
+        }
+
+        .course-section svg rect:nth-child(1) { animation-delay: 0.2s; }
+        .course-section svg rect:nth-child(2) { animation-delay: 0.4s; }
+        .course-section svg rect:nth-child(3) { animation-delay: 0.6s; }
+        .course-section svg rect:nth-child(4) { animation-delay: 0.8s; }
+        .course-section svg rect:nth-child(5) { animation-delay: 1s; }
+
+        .course-section svg circle[stroke] {
+            animation: pieFill 1.5s ease-out forwards;
+        }
+
+        .course-section svg circle[stroke]:nth-child(1) { animation-delay: 0.3s; }
+        .course-section svg circle[stroke]:nth-child(2) { animation-delay: 0.6s; }
+        .course-section svg circle[stroke]:nth-child(3) { animation-delay: 0.9s; }
+        .course-section svg circle[stroke]:nth-child(4) { animation-delay: 1.2s; }
+
+        /* Chart Card Animations */
+        [style*="border-left: 4px solid"] {
+            animation: floatUp 3s ease-in-out infinite;
+        }
+
+        /* KPI Card Animation */
+        [style*="background: linear-gradient(135deg, #ff9500"] {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        /* Hover Effects on Charts */
+        [style*="box-shadow: 0 8px 20px"] {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+
+        [style*="box-shadow: 0 8px 20px"]:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+        }
+
+        /* Continuous value change animations */
+        @keyframes barChange1 {
+            0%, 100% { height: 40px; }
+            33% { height: 55px; }
+            66% { height: 50px; }
+        }
+
+        @keyframes barChange2 {
+            0%, 100% { height: 70px; }
+            33% { height: 85px; }
+            66% { height: 75px; }
+        }
+
+        @keyframes barChange3 {
+            0%, 100% { height: 100px; }
+            33% { height: 115px; }
+            66% { height: 110px; }
+        }
+
+        @keyframes barChange4 {
+            0%, 100% { height: 80px; }
+            33% { height: 95px; }
+            66% { height: 90px; }
+        }
+
+        @keyframes barChange5 {
+            0%, 100% { height: 60px; }
+            33% { height: 75px; }
+            66% { height: 70px; }
+        }
+
+        /* Enhanced bar animations with value changes */
+        .bar-chart-1 { animation: barGrowth 0.8s ease-out 0.2s forwards, barChange1 6s ease-in-out 1s infinite !important; transform-origin: bottom; }
+        .bar-chart-2 { animation: barGrowth 0.8s ease-out 0.4s forwards, barChange2 6s ease-in-out 1.2s infinite !important; transform-origin: bottom; }
+        .bar-chart-3 { animation: barGrowth 0.8s ease-out 0.6s forwards, barChange3 6s ease-in-out 1.4s infinite !important; transform-origin: bottom; }
+        .bar-chart-4 { animation: barGrowth 0.8s ease-out 0.8s forwards, barChange4 6s ease-in-out 1.6s infinite !important; transform-origin: bottom; }
+        .bar-chart-5 { animation: barGrowth 0.8s ease-out 1s forwards, barChange5 6s ease-in-out 1.8s infinite !important; transform-origin: bottom; }
+
+        /* Pie chart animating percentages */
+        @keyframes pieSegment1 {
+            0%, 100% { stroke-dasharray: 78.5 314; }
+            50% { stroke-dasharray: 95 314; }
+        }
+
+        @keyframes pieSegment2 {
+            0%, 100% { stroke-dasharray: 78.5 314; stroke-dashoffset: -78.5; }
+            50% { stroke-dasharray: 85 314; stroke-dashoffset: -95; }
+        }
+
+        @keyframes pieSegment3 {
+            0%, 100% { stroke-dasharray: 78.5 314; stroke-dashoffset: -157; }
+            50% { stroke-dasharray: 75 314; stroke-dashoffset: -180; }
+        }
+
+        @keyframes pieSegment4 {
+            0%, 100% { stroke-dasharray: 78.5 314; stroke-dashoffset: -235.5; }
+            50% { stroke-dasharray: 70 314; stroke-dashoffset: -255; }
+        }
+
+        .pie-segment-1 { animation: pieFill 1.5s ease-out 0.3s forwards, pieSegment1 5s ease-in-out 2s infinite !important; }
+        .pie-segment-2 { animation: pieFill 1.5s ease-out 0.6s forwards, pieSegment2 5s ease-in-out 2s infinite !important; }
+        .pie-segment-3 { animation: pieFill 1.5s ease-out 0.9s forwards, pieSegment3 5s ease-in-out 2s infinite !important; }
+        .pie-segment-4 { animation: pieFill 1.5s ease-out 1.2s forwards, pieSegment4 5s ease-in-out 2s infinite !important; }
+
+        /* KPI counter animation */
+        @keyframes kpiCount {
+            0% { --value: 0; }
+            50% { --value: 2.8; }
+            100% { --value: 2.4; }
+        }
+
+        .kpi-value {
+            animation: kpiCount 4s ease-in-out infinite;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Transformation flow animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes dashShift {
+            to {
+                stroke-dashoffset: -10;
+            }
+        }
+
+        /* DURATION TOGGLE */
+        .toggle-container {
+            display: flex;
+            gap: 1.5rem;
+            margin: 2rem 0 3rem 0;
+            justify-content: center;
+            animation: fadeInUp 0.7s ease-out;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            padding: 1.1rem 3rem;
+            background: white;
+            border: 2px solid #e8ecf1;
+            color: #1a1a2e;
+            cursor: pointer;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .toggle-btn:hover {
+            border-color: #ff006e;
+            color: #ff006e;
+            transform: translateY(-2px);
+        }
+
+        .toggle-btn.active {
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 15px 40px rgba(255, 0, 110, 0.3);
+        }
+
+        .course-section {
+            display: none;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .course-section.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .outline-section {
+            display: none;
+            opacity: 0;
+            margin: 3rem 0;
+            background: white;
+            padding: 3.5rem;
+            border-radius: 16px;
+            border-left: 5px solid #ff006e;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .outline-section.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .outline-section h3 {
+            color: #0f0a1a;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .outline-section h4 {
+            color: #8338ec;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .outline-section p {
+            color: #5a5a7a;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .outline-section ul {
+            margin-left: 1.5rem;
+            list-style: none;
+        }
+
+        .outline-section li {
+            margin-bottom: 1rem;
+            color: #3a3a5a;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            transition: transform 0.3s ease;
+        }
+
+        .outline-section li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #ff006e;
+            font-weight: 900;
+            font-size: 1.3rem;
+        }
+
+        .outline-section li:hover {
+            transform: translateX(5px);
+        }
+
+        /* FORM */
+        .form-container {
+            background: white;
+            padding: 3.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            margin: 3rem auto;
+            max-width: 900px;
+            width: 100%;
+            animation: fadeInUp 0.8s ease-out;
+            border: 1px solid #e8ecf1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff006e, #8338ec);
+        }
+
+        .form-container h3 {
+            color: #0f0a1a;
+            margin-bottom: 2rem;
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: #0f0a1a;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e8ecf1;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            color: #1a1a2e;
+        }
+
+        input:hover, select:hover, textarea:hover {
+            border-color: #d0d8e8;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #ff006e;
+            box-shadow: 0 0 0 4px rgba(255, 0, 110, 0.1);
+            background: #f8fafc;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 1rem;
+        }
+
+        .radio-group label {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .radio-group input {
+            width: auto;
+            margin: 0;
+        }
+
+        button {
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+            color: white;
+            padding: 1.3rem 2.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            box-shadow: 0 12px 30px rgba(255, 0, 110, 0.25);
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(255, 0, 110, 0.35);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            padding: 1.5rem 1.8rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #2e7d32;
+            animation: slideInRight 0.4s ease-out;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
+        }
+
+        /* CONTENT SECTIONS */
+        .content-section {
+            margin: 3rem 0;
+            animation: fadeInUp 0.7s ease-out;
+        }
+
+        .content-section h2 {
+            color: #0f0a1a;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-section p {
+            color: #5a5a7a;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .content-section ul {
+            margin-left: 1.5rem;
+            list-style: none;
+        }
+
+        .content-section li {
+            margin-bottom: 1.2rem;
+            color: #3a3a5a;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .content-section li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff006e;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #0f0a1a 0%, #2d1b4e 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 6rem;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            right: -100px;
+        }
+
+        footer p {
+            margin: 0.8rem 0;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 2rem; }
+            nav { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+            .toggle-container { flex-direction: column; }
+            .course-toggle-container { grid-template-columns: 1fr; gap: 1.2rem; }
+            .course-toggle-container .toggle-btn { padding: 1.5rem 1.2rem; }
+            .course-btn-icon { font-size: 2rem; }
+            .toggle-btn { width: 100%; }
+            .page-header h1 { font-size: 2rem; }
+            .form-container { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">⚡ Quantum</div>
+        <nav>
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('training')">Training</a>
+            <a onclick="showPage('dashboards')">Dashboards</a>
+            <a onclick="showPage('ai')">AI</a>
+            <a onclick="showPage('agriculture')">Agriculture</a>
+            <a onclick="showPage('stem')">STEM</a>
+        </nav>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="hero">
+            <!-- Animated Floating Shapes -->
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+            <div class="floating-shape shape-4"></div>
+            <div class="floating-shape shape-5"></div>
+
+            <div class="hero-content">
+                <h1>Transform Your Business with Quantum Technology</h1>
+                <p>Enterprise-grade solutions in training, AI automation, agriculture, and STEM education</p>
+            </div>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card" onclick="showPage('training')">
+                <div class="service-image"></div>
+                <div class="service-content">
+                    <h3>Professional Training</h3>
+                    <p>Expert-led training programs in PowerBI, Python, Arduino, and emerging technologies</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="showPage('ai')">
+                <div class="service-image"></div>
+                <div class="service-content">
+                    <h3>AI & Automation</h3>
+                    <p>Intelligent workflow automation and AI agent solutions for enterprise efficiency</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="showPage('agriculture')">
+                <div class="service-image"></div>
+                <div class="service-content">
+                    <h3>Agriculture & IoT</h3>
+                    <p>Smart farming systems with IoT sensors and real-time monitoring dashboards</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="showPage('stem')">
+                <div class="service-image"></div>
+                <div class="service-content">
+                    <h3>STEM Education</h3>
+                    <p>Hands-on learning programs building tomorrow's engineers and innovators</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRAINING PAGE -->
+    <div id="training" class="page">
+        <div class="page-header">
+            <h1>Professional Training Programs</h1>
+        </div>
+
+        <div class="page-content">
+            <!-- COURSE SELECTION -->
+            <div class="course-toggle-container">
+                <button class="toggle-btn active" onclick="selectCourse('powerbi', this)">
+                    <svg class="course-btn-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Official Power BI Logo: Bar Chart -->
+                        <defs>
+                            <filter id="shadow">
+                                <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.2"/>
+                            </filter>
+                        </defs>
+                        <!-- First bar (light yellow) -->
+                        <rect x="22" y="50" width="18" height="35" fill="#FDD835" rx="1.5" filter="url(#shadow)"/>
+                        
+                        <!-- Second bar (medium yellow) -->
+                        <rect x="45" y="32" width="18" height="53" fill="#FBC02D" rx="1.5" filter="url(#shadow)"/>
+                        
+                        <!-- Third bar (dark orange) -->
+                        <rect x="68" y="15" width="18" height="70" fill="#F9A825" rx="1.5" filter="url(#shadow)"/>
+                    </svg>
+                    <span class="course-btn-title">PowerBI</span>
+                    <span class="course-btn-subtitle">2 Days</span>
+                </button>
+                <button class="toggle-btn" onclick="selectCourse('python', this)">
+                    <svg class="course-btn-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Official Python Logo: Blue and Yellow Interlocking Snakes -->
+                        <defs>
+                            <filter id="pythonShadow">
+                                <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.2"/>
+                            </filter>
+                        </defs>
+                        <!-- Blue snake (left/top) -->
+                        <path d="M 20 32 Q 20 15 38 15 Q 58 15 58 30 L 58 48 Q 58 62 40 66 Q 22 70 20 55 Z" fill="#3776AB" filter="url(#pythonShadow)"/>
+                        <circle cx="40" cy="25" r="5.5" fill="white"/>
+                        
+                        <!-- Yellow snake (right/bottom) -->
+                        <path d="M 80 58 Q 80 75 62 75 Q 42 75 42 60 L 42 42 Q 42 28 60 24 Q 78 20 80 35 Z" fill="#FFD43B" filter="url(#pythonShadow)"/>
+                        <circle cx="60" cy="68" r="5.5" fill="white"/>
+                        
+                        <!-- Connection/overlap areas -->
+                        <path d="M 42 48 Q 50 52 58 48" stroke="#3776AB" stroke-width="2" fill="none" opacity="0.3"/>
+                    </svg>
+                    <span class="course-btn-title">Python</span>
+                    <span class="course-btn-subtitle">3 Days</span>
+                </button>
+                <button class="toggle-btn" onclick="selectCourse('coming', this)">
+                    <span class="course-btn-icon">✨</span>
+                    <span class="course-btn-title">Coming Soon</span>
+                    <span class="course-btn-subtitle">More Courses</span>
+                </button>
+            </div>
+
+            <!-- POWERBI COURSE -->
+            <div id="course-powerbi" class="course-section active">
+                <div id="outline-powerbi-2days" class="outline-section active">
+                    <h3>PowerBI 2-Day Training Intensive</h3>
+                    <p><strong>Ideal for:</strong> Quick upskilling and intensive hands-on practical experience</p>
+                    
+                    <h4>Day 1: Foundation & Core Skills</h4>
+                    <ul>
+                        <li>Morning: PowerBI introduction, interface fundamentals & data source setup (2 hours)</li>
+                        <li>Midday: Data modeling and visualization basics with interactive lab (2.5 hours)</li>
+                        <li>Afternoon: Q&A session, group discussion & recap (1 hour)</li>
+                    </ul>
+                    
+                    <h4>Day 2: Advanced Features & Certification</h4>
+                    <ul>
+                        <li>Morning: Advanced DAX formulas and real-world applications (2.5 hours)</li>
+                        <li>Afternoon: Dashboard creation capstone project and presentations (2 hours)</li>
+                        <li>Closing: Assessment, certification & career pathways (0.5 hour)</li>
+                    </ul>
+                </div>
+
+                <!-- Sample Dashboard Section -->
+                <div style="margin: 3rem 0; animation: fadeInUp 0.7s ease-out;">
+                    <h3 style="color: #0f0a1a; margin-bottom: 2rem; font-size: 1.8rem; font-weight: 800;">
+                        <span style="background: linear-gradient(135deg, #ff9500 0%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">What You'll Create</span>
+                    </h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                        <!-- Sales Chart -->
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-left: 4px solid #ff9500;" class="bar-chart-container">
+                            <svg viewBox="0 0 200 120" style="width: 100%; height: 100px;">
+                                <rect x="25" y="70" width="25" height="40" fill="#FDD835" rx="2" style="animation: barGrowth 0.8s ease-out 0.2s forwards; transform-origin: bottom;"/>
+                                <rect x="55" y="45" width="25" height="65" fill="#FBC02D" rx="2" style="animation: barGrowth 0.8s ease-out 0.4s forwards; transform-origin: bottom;"/>
+                                <rect x="85" y="20" width="25" height="90" fill="#F9A825" rx="2" style="animation: barGrowth 0.8s ease-out 0.6s forwards; transform-origin: bottom;"/>
+                                <rect x="115" y="40" width="25" height="70" fill="#FDD835" rx="2" style="animation: barGrowth 0.8s ease-out 0.8s forwards; transform-origin: bottom;"/>
+                                <rect x="145" y="60" width="25" height="50" fill="#FBC02D" rx="2" style="animation: barGrowth 0.8s ease-out 1s forwards; transform-origin: bottom;"/>
+                            </svg>
+                        </div>
+
+                        <!-- Market Share Chart -->
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-left: 4px solid #F9A825;" class="pie-chart-container">
+                            <svg viewBox="0 0 120 120" style="width: 100%; height: 100px;">
+                                <circle cx="60" cy="60" r="40" fill="none" stroke="#FDD835" stroke-width="16" stroke-dasharray="62.8 251.2" stroke-dashoffset="0" style="animation: pieFill 1.5s ease-out 0.3s forwards;"/>
+                                <circle cx="60" cy="60" r="40" fill="none" stroke="#FBC02D" stroke-width="16" stroke-dasharray="62.8 251.2" stroke-dashoffset="-62.8" style="animation: pieFill 1.5s ease-out 0.6s forwards;"/>
+                                <circle cx="60" cy="60" r="40" fill="none" stroke="#F9A825" stroke-width="16" stroke-dasharray="62.8 251.2" stroke-dashoffset="-125.6" style="animation: pieFill 1.5s ease-out 0.9s forwards;"/>
+                                <circle cx="60" cy="60" r="40" fill="none" stroke="#FFD43B" stroke-width="16" stroke-dasharray="62.8 251.2" stroke-dashoffset="-188.4" style="animation: pieFill 1.5s ease-out 1.2s forwards;"/>
+                            </svg>
+                        </div>
+
+                        <!-- KPI Card -->
+                        <div style="background: linear-gradient(135deg, #ff9500 0%, #f59e0b 100%); padding: 2rem; border-radius: 12px; box-shadow: 0 8px 20px rgba(255, 149, 0, 0.2); color: white; border-left: 4px solid #e68500; display: flex; align-items: center; justify-content: center; min-height: 160px;">
+                            <p style="font-size: 3.5rem; font-weight: 900; margin: 0;" id="kpi-revenue" data-type="currency">$2.4M</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Excel to PowerBI Transformation -->
+                <div style="margin: 3rem 0;">
+                    <h3 style="color: #0f0a1a; margin-bottom: 2.5rem; font-size: 1.8rem; font-weight: 800; text-align: center;">
+                        <span style="background: linear-gradient(135deg, #ff9500 0%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Excel to PowerBI Transformation</span>
+                    </h3>
+                    
+                    <!-- Transformation Flow - Main Container -->
+                    <div style="background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%); padding: 3rem 2rem; border-radius: 16px; border: 2px solid #ffe4b5; margin-bottom: 2.5rem;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 2.5rem; flex-wrap: wrap;">
+                            
+                            <!-- Step 1: Excel Data -->
+                            <div style="flex: 1; min-width: 200px; text-align: center; animation: slideInLeft 0.8s ease-out;">
+                                <div style="background: white; width: 120px; height: 120px; border-radius: 16px; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(33, 115, 70, 0.12); border-left: 6px solid #217346;">
+                                    <svg viewBox="0 0 100 100" style="width: 70px; height: 70px;">
+                                        <!-- Excel grid with rounded corners -->
+                                        <rect x="12" y="12" width="76" height="76" fill="none" stroke="#217346" stroke-width="2" rx="6"/>
+                                        <line x1="32" y1="12" x2="32" y2="88" stroke="#217346" stroke-width="1.5"/>
+                                        <line x1="52" y1="12" x2="52" y2="88" stroke="#217346" stroke-width="1.5"/>
+                                        <line x1="72" y1="12" x2="72" y2="88" stroke="#217346" stroke-width="1.5"/>
+                                        <line x1="12" y1="32" x2="88" y2="32" stroke="#217346" stroke-width="1.5"/>
+                                        <line x1="12" y1="52" x2="88" y2="52" stroke="#217346" stroke-width="1.5"/>
+                                        <line x1="12" y1="72" x2="88" y2="72" stroke="#217346" stroke-width="1.5"/>
+                                        <rect x="14" y="14" width="16" height="16" fill="#217346" rx="2"/>
+                                    </svg>
+                                </div>
+                                <h4 style="color: #0f0a1a; margin: 0 0 0.6rem; font-size: 1.2rem; font-weight: 700;">Excel Data</h4>
+                                <p style="color: #6b7280; font-size: 0.95rem; margin: 0;">Spreadsheets & Tables</p>
+                            </div>
+                            
+                            <!-- Arrow 1 -->
+                            <div style="flex-shrink: 0; animation: slideInLeft 0.8s ease-out 0.2s both;">
+                                <svg viewBox="0 0 100 60" style="width: 60px; height: 40px;">
+                                    <defs>
+                                        <marker id="arrowhead1" markerWidth="12" markerHeight="12" refX="11" refY="5" orient="auto">
+                                            <polygon points="0 0, 12 5, 0 10" fill="#ff9500" />
+                                        </marker>
+                                    </defs>
+                                    <line x1="10" y1="30" x2="75" y2="30" stroke="#ff9500" stroke-width="3" marker-end="url(#arrowhead1)" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            
+                            <!-- Step 2: Data Import & Modeling -->
+                            <div style="flex: 1; min-width: 200px; text-align: center; animation: slideInLeft 0.8s ease-out 0.4s both;">
+                                <div style="background: linear-gradient(135deg, #ff9500 0%, #f59e0b 100%); width: 120px; height: 120px; border-radius: 16px; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(255, 149, 0, 0.2); color: white;">
+                                    <svg viewBox="0 0 100 100" style="width: 70px; height: 70px;">
+                                        <!-- Gear icon -->
+                                        <circle cx="50" cy="50" r="24" fill="none" stroke="white" stroke-width="2"/>
+                                        <circle cx="50" cy="50" r="10" fill="white"/>
+                                        <!-- Gear teeth -->
+                                        <rect x="48" y="12" width="4" height="10" fill="white"/>
+                                        <rect x="48" y="78" width="4" height="10" fill="white"/>
+                                        <rect x="12" y="48" width="10" height="4" fill="white"/>
+                                        <rect x="78" y="48" width="10" height="4" fill="white"/>
+                                    </svg>
+                                </div>
+                                <h4 style="color: #0f0a1a; margin: 0 0 0.6rem; font-size: 1.2rem; font-weight: 700;">Data Import</h4>
+                                <p style="color: #6b7280; font-size: 0.95rem; margin: 0;">& Modeling</p>
+                            </div>
+                            
+                            <!-- Arrow 2 -->
+                            <div style="flex-shrink: 0; animation: slideInLeft 0.8s ease-out 0.6s both;">
+                                <svg viewBox="0 0 100 60" style="width: 60px; height: 40px;">
+                                    <defs>
+                                        <marker id="arrowhead2" markerWidth="12" markerHeight="12" refX="11" refY="5" orient="auto">
+                                            <polygon points="0 0, 12 5, 0 10" fill="#ff006e" />
+                                        </marker>
+                                    </defs>
+                                    <line x1="10" y1="30" x2="75" y2="30" stroke="#ff006e" stroke-width="3" marker-end="url(#arrowhead2)" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            
+                            <!-- Step 3: PowerBI -->
+                            <div style="flex: 1; min-width: 200px; text-align: center; animation: slideInLeft 0.8s ease-out 0.8s both;">
+                                <div style="background: white; width: 120px; height: 120px; border-radius: 16px; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(255, 0, 110, 0.12); border-left: 6px solid #ff006e;">
+                                    <svg viewBox="0 0 100 100" style="width: 70px; height: 70px;">
+                                        <!-- PowerBI bars chart -->
+                                        <rect x="12" y="58" width="14" height="30" fill="#ff006e" rx="2"/>
+                                        <rect x="33" y="38" width="14" height="50" fill="#ff0099" rx="2"/>
+                                        <rect x="54" y="18" width="14" height="70" fill="#ff006e" rx="2"/>
+                                        <rect x="75" y="48" width="14" height="40" fill="#ff0099" rx="2"/>
+                                    </svg>
+                                </div>
+                                <h4 style="color: #0f0a1a; margin: 0 0 0.6rem; font-size: 1.2rem; font-weight: 700;">PowerBI</h4>
+                                <p style="color: #6b7280; font-size: 0.95rem; margin: 0;">Interactive Dashboards</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Benefits Grid -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                        <!-- Faster Insights -->
+                        <div style="background: white; padding: 2rem; border-radius: 12px; border-left: 5px solid #ff9500; box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: all 0.3s ease;">
+                            <div style="color: #ff9500; font-size: 2rem; margin-bottom: 1rem;">⚡</div>
+                            <h5 style="color: #0f0a1a; margin: 0 0 0.8rem; font-weight: 700; font-size: 1.1rem;">Faster Insights</h5>
+                            <p style="color: #6b7280; font-size: 0.95rem; margin: 0; line-height: 1.6;">Convert static spreadsheets into interactive dashboards instantly</p>
+                        </div>
+                        
+                        <!-- Better Clarity -->
+                        <div style="background: white; padding: 2rem; border-radius: 12px; border-left: 5px solid #ff006e; box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: all 0.3s ease;">
+                            <div style="color: #ff006e; font-size: 2rem; margin-bottom: 1rem;">📊</div>
+                            <h5 style="color: #0f0a1a; margin: 0 0 0.8rem; font-weight: 700; font-size: 1.1rem;">Better Clarity</h5>
+                            <p style="color: #6b7280; font-size: 0.95rem; margin: 0; line-height: 1.6;">Transform confusing data tables into clear, visual stories</p>
+                        </div>
+                        
+                        <!-- Live Updates -->
+                        <div style="background: white; padding: 2rem; border-radius: 12px; border-left: 5px solid #8338ec; box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: all 0.3s ease;">
+                            <div style="color: #8338ec; font-size: 2rem; margin-bottom: 1rem;">🔄</div>
+                            <h5 style="color: #0f0a1a; margin: 0 0 0.8rem; font-weight: 700; font-size: 1.1rem;">Live Updates</h5>
+                            <p style="color: #6b7280; font-size: 0.95rem; margin: 0; line-height: 1.6;">Dashboards refresh automatically—no more manual updates</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Who Can Enroll Section -->
+                <div style="margin: 3rem 0; padding: 2.5rem; background: linear-gradient(135deg, #f0e6ff 0%, #ffe6f0 100%); border-radius: 12px; border: 2px solid #8338ec;">
+                    <h3 style="color: #0f0a1a; margin-bottom: 2rem; font-size: 1.6rem; font-weight: 800;">
+                        <span style="color: #8338ec;">👥 Who Can Enroll?</span>
+                    </h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+                        <!-- Business Analysts -->
+                        <div style="background: white; padding: 1.8rem; border-radius: 10px; border-left: 4px solid #ff9500; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                            <p style="font-size: 2rem; margin: 0 0 0.8rem;">📈</p>
+                            <h4 style="color: #0f0a1a; margin: 0.5rem 0; font-weight: 700; font-size: 1.1rem;">Business Analysts</h4>
+                            <p style="color: #5a5a7a; font-size: 0.9rem; margin: 0;">Transform data insights into compelling business reports and dashboards</p>
+                        </div>
+                        
+                        <!-- Data Professionals -->
+                        <div style="background: white; padding: 1.8rem; border-radius: 10px; border-left: 4px solid #ff006e; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                            <p style="font-size: 2rem; margin: 0 0 0.8rem;">👨‍💻</p>
+                            <h4 style="color: #0f0a1a; margin: 0.5rem 0; font-weight: 700; font-size: 1.1rem;">Data Professionals</h4>
+                            <p style="color: #5a5a7a; font-size: 0.9rem; margin: 0;">Expand your skill set from data analysis to visualization expertise</p>
+                        </div>
+                        
+                        <!-- Finance & Accounting -->
+                        <div style="background: white; padding: 1.8rem; border-radius: 10px; border-left: 4px solid #217346; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                            <p style="font-size: 2rem; margin: 0 0 0.8rem;">💰</p>
+                            <h4 style="color: #0f0a1a; margin: 0.5rem 0; font-weight: 700; font-size: 1.1rem;">Finance & Accounting</h4>
+                            <p style="color: #5a5a7a; font-size: 0.9rem; margin: 0;">Create financial dashboards and automate reporting processes</p>
+                        </div>
+                        
+                        <!-- Managers & Executives -->
+                        <div style="background: white; padding: 1.8rem; border-radius: 10px; border-left: 4px solid #1a73e8; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                            <p style="font-size: 2rem; margin: 0 0 0.8rem;">📊</p>
+                            <h4 style="color: #0f0a1a; margin: 0.5rem 0; font-weight: 700; font-size: 1.1rem;">Managers & Executives</h4>
+                            <p style="color: #5a5a7a; font-size: 0.9rem; margin: 0;">Make data-driven decisions with real-time performance dashboards</p>
+                        </div>
+                        
+                        <!-- Excel Users -->
+                        <div style="background: white; padding: 1.8rem; border-radius: 10px; border-left: 4px solid #ea4335; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                            <p style="font-size: 2rem; margin: 0 0 0.8rem;">📑</p>
+                            <h4 style="color: #0f0a1a; margin: 0.5rem 0; font-weight: 700; font-size: 1.1rem;">Excel Power Users</h4>
+                            <p style="color: #5a5a7a; font-size: 0.9rem; margin: 0;">Transition from spreadsheets to powerful BI visualization tools</p>
+                        </div>
+                        
+                        <!-- Students & Professionals -->
+                        <div style="background: white; padding: 1.8rem; border-radius: 10px; border-left: 4px solid #fbbc04; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                            <p style="font-size: 2rem; margin: 0 0 0.8rem;">🎓</p>
+                            <h4 style="color: #0f0a1a; margin: 0.5rem 0; font-weight: 700; font-size: 1.1rem;">Students & Career Changers</h4>
+                            <p style="color: #5a5a7a; font-size: 0.9rem; margin: 0;">Launch your BI career with industry-recognized PowerBI skills</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Prerequisites -->
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff9e6; border-radius: 10px; border-left: 4px solid #fbbc04;">
+                        <h5 style="color: #0f0a1a; margin: 0 0 1rem; font-weight: 700;">✓ No Prerequisites Required</h5>
+                        <p style="color: #5a5a7a; margin: 0; font-size: 0.95rem;">Basic Excel knowledge is helpful but not required. Our 2-day course starts from fundamentals and guides you step-by-step through real-world scenarios.</p>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #fff5f8 0%, #fef2f5 100%); padding: 2rem; border-radius: 12px; margin: 3rem 0; border-left: 5px solid #ff9500;">
+                    <h4 style="color: #0f0a1a; margin-bottom: 1.5rem; font-size: 1.3rem; font-weight: 800;">Master Data Visualization</h4>
+                    <ul style="list-style: none; margin: 0; padding: 0;">
+                        <li style="margin-bottom: 1rem; color: #3a3a5a; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>Transform raw data into compelling visual stories</li>
+                        <li style="margin-bottom: 1rem; color: #3a3a5a; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>Build interactive dashboards in minutes, not days</li>
+                        <li style="margin-bottom: 1rem; color: #3a3a5a; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>Make data-driven decisions with real-time insights</li>
+                        <li style="margin-bottom: 1rem; color: #3a3a5a; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>Impress stakeholders with professional visualizations</li>
+                    </ul>
+                </div>
+
+                <!-- Cross-link to Dashboard Service -->
+                <div style="margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, #fff9f0 0%, #ffe6f0 100%); border-radius: 12px; border: 2px solid #ff9500; text-align: center;">
+                    <h4 style="color: #0f0a1a; font-size: 1.3rem; font-weight: 800; margin: 0 0 0.6rem;">Don't have time to learn?</h4>
+                    <p style="color: #5a5a7a; margin: 0 0 1.5rem; font-size: 0.95rem;">Let our experts build your PowerBI dashboard for you.</p>
+                    <button onclick="showPage('dashboards')" style="width: auto; padding: 1rem 2.5rem; background: linear-gradient(135deg, #ff9500 0%, #ff006e 100%);">📊 View Dashboard Creation Service</button>
+                </div>
+            </div>
+
+            <!-- PYTHON COURSE -->
+            <div id="course-python" class="course-section">
+                <div id="outline-python-3days" class="outline-section active">
+                    <h3>Python 3-Day Training Intensive</h3>
+                    <p><strong>Ideal for:</strong> Comprehensive Python programming fundamentals with hands-on practice</p>
+                    
+                    <h4>Day 1: Python Fundamentals & Basics</h4>
+                    <ul>
+                        <li>Morning: Python introduction, installation & environment setup (1.5 hours)</li>
+                        <li>Midday: Variables, data types, operators, and control structures (2.5 hours)</li>
+                        <li>Afternoon: Hands-on lab with basic programs and exercises (1 hour)</li>
+                    </ul>
+                    
+                    <h4>Day 2: Functions, Modules & Data Structures</h4>
+                    <ul>
+                        <li>Morning: Functions, scope, and modules (2 hours)</li>
+                        <li>Midday: Lists, dictionaries, tuples and data manipulation (2 hours)</li>
+                        <li>Afternoon: Hands-on lab 2 with real-world data scenarios (1 hour)</li>
+                    </ul>
+
+                    <h4>Day 3: Libraries, Data Science & Capstone</h4>
+                    <ul>
+                        <li>Morning: Pandas, NumPy and data analysis fundamentals (2 hours)</li>
+                        <li>Midday: Data visualization and practical applications (1.5 hours)</li>
+                        <li>Afternoon: Capstone project work and team presentations (1.5 hour)</li>
+                        <li>Closing: Assessment, certification & career guidance (0.5 hour)</li>
+                    </ul>
+                </div>
+
+                <!-- Python Code Playground -->
+                <div style="margin-top: 3rem; padding: 2.5rem; background: linear-gradient(135deg, #f0f4ff 0%, #fff0f5 100%); border-radius: 14px; border: 2px solid #8338ec;">
+                    <h3 style="color: #0f0a1a; margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 800;">
+                        🎮 <span style="color: #306598;">Try Python Code</span> - Live Demo
+                    </h3>
+                    <p style="color: #5a5a7a; margin-bottom: 2rem; font-size: 0.95rem;">Select a code example, run it, and see the output instantly. Learn by doing!</p>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+                        <!-- Code Selector & Display -->
+                        <div>
+                            <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.8rem; font-size: 0.95rem;">Choose an Example:</label>
+                            <select id="pythonCodeSelect" onchange="loadPythonCode(this.value)" style="width: 100%; padding: 0.8rem; border: 2px solid #8338ec; border-radius: 8px; font-size: 0.9rem; color: #0f0a1a; background: white; cursor: pointer; font-weight: 600;">
+                                <option value="">-- Select a code example --</option>
+                                <option value="hello">Hello World & Variables</option>
+                                <option value="list">Working with Lists</option>
+                                <option value="loop">For Loop Basics</option>
+                                <option value="function">Functions & Return Values</option>
+                                <option value="dict">Dictionaries & Data</option>
+                                <option value="calc">Calculator with Conditions</option>
+                            </select>
+
+                            <!-- Code Display -->
+                            <div style="margin-top: 1.5rem; background: #1e1e2e; color: #e8e8e8; padding: 1.5rem; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6; min-height: 200px; border: 1px solid #333; overflow-x: auto;">
+                                <pre id="pythonCodeDisplay" style="margin: 0; white-space: pre-wrap; word-wrap: break-word;">
+<span style="color: #999;">// Select an example above to view code</span>
+                                </pre>
+                            </div>
+
+                            <button onclick="runPythonCode()" style="width: 100%; margin-top: 1.5rem; padding: 1rem; background: linear-gradient(135deg, #306598 0%, #2a5280 100%); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease;">
+                                ▶️ Run Code
+                            </button>
+                        </div>
+
+                        <!-- Output Display -->
+                        <div>
+                            <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.8rem; font-size: 0.95rem;">Output:</label>
+                            <div style="background: #1e1e2e; color: #7ee787; padding: 1.5rem; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.8; min-height: 200px; border: 1px solid #333; overflow-y: auto;">
+                                <div id="pythonOutput" style="white-space: pre-wrap; word-wrap: break-word;">
+<span style="color: #999;">// Click "Run Code" to see output here</span>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 1rem; padding: 1rem; background: rgba(51, 102, 204, 0.1); border-left: 4px solid #306598; border-radius: 6px;">
+                                <p style="color: #306598; font-size: 0.85rem; margin: 0; font-weight: 600;">💡 Tip: Modify the code examples in your own editor and explore how Python works!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="course-coming" class="course-section">
+                <div id="outline-coming" class="outline-section active">
+                    <h3>More Courses Coming Soon</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">We're developing new comprehensive training programs to expand your skills. Stay tuned for announcements on additional courses!</p>
+                    <h4>Upcoming Programs</h4>
+                    <ul>
+                        <li>Advanced Excel & Data Analytics</li>
+                        <li>Machine Learning Fundamentals</li>
+                        <li>Cloud Architecture & DevOps</li>
+                        <li>Advanced Arduino & IoT Development</li>
+                        <li>Business Intelligence Strategies</li>
+                    </ul>
+                    <p style="margin-top: 2rem; font-weight: 600; color: #ff006e;">📢 Check back soon for launch dates and enrollment details!</p>
+                </div>
+            </div>
+
+            <!-- ENROLLMENT FORM -->
+            <div class="form-container">
+                <h3>Enroll Now</h3>
+                <form id="enrollmentForm" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+60 12-345 6789" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address *</label>
+                        <textarea id="address" name="address" rows="3" placeholder="Street address, city, state" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course">Training Course *</label>
+                        <select id="course" name="course" required>
+                            <option value="">-- Select Course --</option>
+                            <option value="PowerBI">PowerBI Fundamentals (2-Day)</option>
+                            <option value="Python">Python Programming (3-Day)</option>
+                            <option value="Coming Soon">Coming Soon Programs</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Training Format *</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="format" value="Face-to-Face" required> Face-to-Face
+                            </label>
+                            <label>
+                                <input type="radio" name="format" value="Online" required> Online
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="duration">Training Duration *</label>
+                        <select id="duration" name="duration" required>
+                            <option value="">Select Duration</option>
+                            <option value="2-Day" id="opt-2day" style="display:none;">2-Day Program</option>
+                            <option value="4-Day" id="opt-4day" style="display:none;">4-Day Program</option>
+                            <option value="3-Day" id="opt-3day" style="display:none;">3-Day Program</option>
+                        </select>
+                    </div>
+
+                    <button type="submit">Complete Enrollment</button>
+                    <div id="successMessage" class="success-message">
+                        <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">✓ Enrollment Confirmed!</div>
+                        <div id="successDetails" style="font-size: 0.95rem; opacity: 0.95;"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD SERVICE PAGE -->
+    <div id="dashboards" class="page">
+        <div class="page-header"><h1>PowerBI Dashboard Creation</h1></div>
+        <div class="page-content">
+                <!-- POWERBI DASHBOARD CREATION SERVICE -->
+                <div id="dashboard-service" style="margin: 1rem 0 4rem;">
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.8rem;">
+                            <span style="background: linear-gradient(135deg, #ff9500 0%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">PowerBI Dashboard Creation Service</span>
+                        </h3>
+                        <p style="color: #5a5a7a; font-size: 1.1rem; max-width: 640px; margin: 0 auto 2.5rem;">Don't have time to learn? We'll build it for you. Professional dashboards designed, built, and delivered by our experts.</p>
+                    </div>
+
+                    <!-- Pricing Tiers -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3.5rem;">
+                        <!-- Starter -->
+                        <div style="background: white; padding: 2.5rem 2rem; border-radius: 14px; border: 2px solid #e8ecf1; border-top: 6px solid #ff9500; box-shadow: 0 8px 24px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+                            <h4 style="color: #0f0a1a; font-size: 1.4rem; font-weight: 800; margin: 0 0 0.5rem;">Starter</h4>
+                            <p style="color: #ff9500; font-weight: 800; font-size: 1.05rem; margin: 0 0 1.5rem;">Contact for Quote</p>
+                            <ul style="list-style: none; margin: 0 0 1.5rem; padding: 0; flex-grow: 1;">
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>1 professional dashboard</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>Up to 2 data sources (Excel/CSV)</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>Up to 5 visuals & KPI cards</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>1 revision round</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff9500; font-weight: 900;">✓</span>5-day delivery</li>
+                            </ul>
+                            <button onclick="selectDashboardPackage('Starter')" style="background: white; color: #ff9500; border: 2px solid #ff9500; box-shadow: none; padding: 0.9rem;">Choose Starter</button>
+                        </div>
+
+                        <!-- Professional (highlighted) -->
+                        <div style="background: linear-gradient(180deg, #fff9f0 0%, #ffffff 100%); padding: 2.5rem 2rem; border-radius: 14px; border: 2px solid #ff006e; border-top: 6px solid #ff006e; box-shadow: 0 16px 40px rgba(255, 0, 110, 0.15); display: flex; flex-direction: column; position: relative;">
+                            <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%); color: white; font-size: 0.75rem; font-weight: 800; padding: 0.3rem 1.2rem; border-radius: 20px; letter-spacing: 0.5px;">MOST POPULAR</div>
+                            <h4 style="color: #0f0a1a; font-size: 1.4rem; font-weight: 800; margin: 0 0 0.5rem;">Professional</h4>
+                            <p style="color: #ff006e; font-weight: 800; font-size: 1.05rem; margin: 0 0 1.5rem;">Contact for Quote</p>
+                            <ul style="list-style: none; margin: 0 0 1.5rem; padding: 0; flex-grow: 1;">
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff006e; font-weight: 900;">✓</span>Up to 3 dashboards</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff006e; font-weight: 900;">✓</span>Up to 5 data sources incl. databases</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff006e; font-weight: 900;">✓</span>Custom DAX measures & calculations</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff006e; font-weight: 900;">✓</span>3 revision rounds</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #ff006e; font-weight: 900;">✓</span>10-day delivery</li>
+                            </ul>
+                            <button onclick="selectDashboardPackage('Professional')" style="padding: 0.9rem;">Choose Professional</button>
+                        </div>
+
+                        <!-- Enterprise -->
+                        <div style="background: white; padding: 2.5rem 2rem; border-radius: 14px; border: 2px solid #e8ecf1; border-top: 6px solid #8338ec; box-shadow: 0 8px 24px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+                            <h4 style="color: #0f0a1a; font-size: 1.4rem; font-weight: 800; margin: 0 0 0.5rem;">Enterprise</h4>
+                            <p style="color: #8338ec; font-weight: 800; font-size: 1.05rem; margin: 0 0 1.5rem;">Contact for Quote</p>
+                            <ul style="list-style: none; margin: 0 0 1.5rem; padding: 0; flex-grow: 1;">
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #8338ec; font-weight: 900;">✓</span>Unlimited dashboards</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #8338ec; font-weight: 900;">✓</span>Full data modeling & architecture</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #8338ec; font-weight: 900;">✓</span>Automated refresh setup</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #8338ec; font-weight: 900;">✓</span>Team training handover</li>
+                                <li style="margin-bottom: 0.9rem; color: #3a3a5a; padding-left: 1.8rem; position: relative; font-size: 0.92rem;"><span style="position: absolute; left: 0; color: #8338ec; font-weight: 900;">✓</span>Ongoing support & maintenance</li>
+                            </ul>
+                            <button onclick="selectDashboardPackage('Enterprise')" style="background: white; color: #8338ec; border: 2px solid #8338ec; box-shadow: none; padding: 0.9rem;">Choose Enterprise</button>
+                        </div>
+                    </div>
+
+                    <!-- 5-Step Process Timeline -->
+                    <div style="background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%); padding: 3rem 2rem; border-radius: 16px; border: 2px solid #ffe4b5; margin-bottom: 3.5rem;">
+                        <h4 style="color: #0f0a1a; text-align: center; font-size: 1.4rem; font-weight: 800; margin: 0 0 2.5rem;">How It Works</h4>
+                        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+                            <div style="flex: 1; min-width: 150px; text-align: center;">
+                                <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #ff9500 0%, #f59e0b 100%); color: white; font-size: 1.3rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 16px rgba(255,149,0,0.3);">1</div>
+                                <h5 style="color: #0f0a1a; font-weight: 700; margin: 0 0 0.4rem; font-size: 1rem;">Consultation</h5>
+                                <p style="color: #6b7280; font-size: 0.85rem; margin: 0;">We discuss your goals & requirements</p>
+                            </div>
+                            <div style="flex: 1; min-width: 150px; text-align: center;">
+                                <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #ff6e00 0%, #ff9500 100%); color: white; font-size: 1.3rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 16px rgba(255,110,0,0.3);">2</div>
+                                <h5 style="color: #0f0a1a; font-weight: 700; margin: 0 0 0.4rem; font-size: 1rem;">Data Review</h5>
+                                <p style="color: #6b7280; font-size: 0.85rem; margin: 0;">We analyze your data sources & structure</p>
+                            </div>
+                            <div style="flex: 1; min-width: 150px; text-align: center;">
+                                <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #ff006e 0%, #ff0099 100%); color: white; font-size: 1.3rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 16px rgba(255,0,110,0.3);">3</div>
+                                <h5 style="color: #0f0a1a; font-weight: 700; margin: 0 0 0.4rem; font-size: 1rem;">Design & Build</h5>
+                                <p style="color: #6b7280; font-size: 0.85rem; margin: 0;">Our experts craft your dashboard</p>
+                            </div>
+                            <div style="flex: 1; min-width: 150px; text-align: center;">
+                                <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #a855f7 0%, #8338ec 100%); color: white; font-size: 1.3rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 16px rgba(131,56,236,0.3);">4</div>
+                                <h5 style="color: #0f0a1a; font-weight: 700; margin: 0 0 0.4rem; font-size: 1rem;">Review & Revise</h5>
+                                <p style="color: #6b7280; font-size: 0.85rem; margin: 0;">Your feedback shapes the final result</p>
+                            </div>
+                            <div style="flex: 1; min-width: 150px; text-align: center;">
+                                <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #8338ec 0%, #3a86ff 100%); color: white; font-size: 1.3rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 6px 16px rgba(58,134,255,0.3);">5</div>
+                                <h5 style="color: #0f0a1a; font-weight: 700; margin: 0 0 0.4rem; font-size: 1rem;">Handover</h5>
+                                <p style="color: #6b7280; font-size: 0.85rem; margin: 0;">Delivery, walkthrough & documentation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Request Form -->
+                    <div style="background: white; padding: 3rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid #e8ecf1; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #ff9500, #ff006e);"></div>
+                        <h4 style="color: #0f0a1a; margin-bottom: 0.8rem; font-size: 1.5rem; font-weight: 800;">📊 Request Your Dashboard</h4>
+                        <p style="color: #5a5a7a; margin-bottom: 2rem; font-size: 0.95rem;">Tell us what you need and we'll get back to you with a proposal and quote within 24 hours.</p>
+
+                        <div id="dashboardSuccessMessage" style="background: #d4edda; color: #155724; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #28a745; margin-bottom: 1.5rem; display: none; font-size: 0.95rem;">
+                            <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">✓ Dashboard Request Submitted!</div>
+                            <div id="dashboardSuccessDetails" style="margin-bottom: 0.5rem;"></div>
+                            <div>Our team will contact you with a proposal within 24 hours.</div>
+                        </div>
+
+                        <form id="dashboardRequestForm" onsubmit="submitDashboardRequest(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div>
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Full Name *</label>
+                                <input type="text" name="name" placeholder="Your full name" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box;">
+                            </div>
+                            <div>
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Email Address *</label>
+                                <input type="email" name="email" placeholder="your.email@company.com" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box;">
+                            </div>
+                            <div>
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Company Name *</label>
+                                <input type="text" name="company" placeholder="Your company name" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box;">
+                            </div>
+                            <div>
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Phone Number *</label>
+                                <input type="tel" name="phone" placeholder="+60 12-345 6789" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box;">
+                            </div>
+                            <div>
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Package *</label>
+                                <select id="dashboardPackage" name="package" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; color: #0f0a1a; background: white; cursor: pointer; box-sizing: border-box;">
+                                    <option value="">-- Select package --</option>
+                                    <option value="Starter">Starter</option>
+                                    <option value="Professional">Professional</option>
+                                    <option value="Enterprise">Enterprise</option>
+                                    <option value="Not sure yet">Not sure yet — advise me</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Timeline *</label>
+                                <select name="timeline" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; color: #0f0a1a; background: white; cursor: pointer; box-sizing: border-box;">
+                                    <option value="">-- Select timeline --</option>
+                                    <option value="ASAP (within 1 week)">🔴 ASAP (within 1 week)</option>
+                                    <option value="Fast (2-3 weeks)">🟠 Fast (2-3 weeks)</option>
+                                    <option value="Normal (1-2 months)">🟡 Normal (1-2 months)</option>
+                                    <option value="Flexible (no rush)">🟢 Flexible (no rush)</option>
+                                </select>
+                            </div>
+                            <div style="grid-column: 1 / -1;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Data Sources *</label>
+                                <input type="text" name="data_sources" placeholder="e.g. Excel files, Google Sheets, SQL database, SAP..." required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; box-sizing: border-box;">
+                            </div>
+                            <div style="grid-column: 1 / -1;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">KPIs & Metrics You Want to Track *</label>
+                                <textarea name="kpis" placeholder="e.g. Monthly revenue, sales by region, customer retention, inventory levels..." required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; min-height: 90px; box-sizing: border-box;"></textarea>
+                            </div>
+                            <div style="grid-column: 1 / -1;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Additional Notes</label>
+                                <textarea name="notes" placeholder="Anything else we should know? Branding requirements, sample dashboards you like, access constraints..." style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; min-height: 70px; box-sizing: border-box;"></textarea>
+                            </div>
+                            <div style="grid-column: 1 / -1;">
+                                <button type="submit" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, #ff9500 0%, #ff006e 100%); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer;">📊 Request Dashboard Proposal</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <!-- AI PAGE -->
+    <div id="ai" class="page">
+        <div class="page-header"><h1>AI & Automation Solutions</h1></div>
+        <div class="page-content">
+            <div class="content-section">
+                <h2>Intelligent Workflow Automation</h2>
+                <p>We design and implement sophisticated AI agents and automation workflows using industry-leading platforms. Transform manual processes into intelligent, scalable systems that reduce operational overhead and increase accuracy.</p>
+            </div>
+            
+            <div class="content-section">
+                <h2>Core Capabilities</h2>
+                <ul>
+                    <li>Custom AI agent development and training</li>
+                    <li>End-to-end workflow automation and optimization</li>
+                    <li>Data processing, ETL, and integration solutions</li>
+                    <li>Intelligent task automation and scheduling</li>
+                    <li>API integration, deployment, and monitoring</li>
+                    <li>Machine learning model integration</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>Use Cases & Applications</h2>
+                <ul>
+                    <li>Reduce manual data entry by up to 90%</li>
+                    <li>Accelerate report generation and analysis</li>
+                    <li>Enable 24/7 automated customer interactions</li>
+                    <li>Improve data accuracy and compliance</li>
+                    <li>Scale operations without proportional staffing increases</li>
+                </ul>
+            </div>
+
+            <!-- Featured AI Agent Projects -->
+            <div class="content-section" style="margin-top: 3rem; padding: 2.5rem; background: linear-gradient(135deg, #f0e6ff 0%, #fff0f5 100%); border-radius: 14px; border: 2px solid #8338ec;">
+                <h2 style="color: #0f0a1a; margin-bottom: 1rem;">🤖 Featured AI Agent Projects</h2>
+                <p style="color: #5a5a7a; margin-bottom: 2.5rem;">Real-world client automation solutions powered by intelligent AI agents. See how we transform business processes.</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    
+                    <!-- Email Automation Agent -->
+                    <div style="background: white; padding: 2rem; border-radius: 12px; border-left: 5px solid #ff006e; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">✉️</div>
+                        <h4 style="color: #0f0a1a; margin: 0 0 1rem; font-weight: 700; font-size: 1.15rem;">Email Automation Agent</h4>
+                        <p style="color: #5a5a7a; font-size: 0.9rem; margin: 0 0 1.5rem; line-height: 1.6;">Intelligent email campaigns, auto-responses, newsletter distribution, and customer communication workflows.</p>
+                        <div style="background: #fff5f8; padding: 1rem; border-radius: 8px; border-left: 3px solid #ff006e;">
+                            <p style="color: #ff006e; font-size: 0.85rem; margin: 0; font-weight: 600;">✓ SMTP Integration</p>
+                            <p style="color: #ff006e; font-size: 0.85rem; margin: 0.3rem 0 0; font-weight: 600;">✓ Template Generation</p>
+                        </div>
+                    </div>
+
+                    <!-- Google Drive Agent -->
+                    <div style="background: white; padding: 2rem; border-radius: 12px; border-left: 5px solid #1a73e8; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📁</div>
+                        <h4 style="color: #0f0a1a; margin: 0 0 1rem; font-weight: 700; font-size: 1.15rem;">Google Drive Agent</h4>
+                        <p style="color: #5a5a7a; font-size: 0.9rem; margin: 0 0 1.5rem; line-height: 1.6;">Automated file management, organization, backup workflows, document processing, and folder structure automation.</p>
+                        <div style="background: #e8f0fe; padding: 1rem; border-radius: 8px; border-left: 3px solid #1a73e8;">
+                            <p style="color: #1a73e8; font-size: 0.85rem; margin: 0; font-weight: 600;">✓ File Upload/Download</p>
+                            <p style="color: #1a73e8; font-size: 0.85rem; margin: 0.3rem 0 0; font-weight: 600;">✓ Automated Organization</p>
+                        </div>
+                    </div>
+
+                    <!-- Google Sheets Agent -->
+                    <div style="background: white; padding: 2rem; border-radius: 12px; border-left: 5px solid #34a853; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📊</div>
+                        <h4 style="color: #0f0a1a; margin: 0 0 1rem; font-weight: 700; font-size: 1.15rem;">Google Sheets Agent</h4>
+                        <p style="color: #5a5a7a; font-size: 0.9rem; margin: 0 0 1.5rem; line-height: 1.6;">Data entry automation, report generation, real-time data processing, form submission handling, and analytics.</p>
+                        <div style="background: #e6f4ea; padding: 1rem; border-radius: 8px; border-left: 3px solid #34a853;">
+                            <p style="color: #34a853; font-size: 0.85rem; margin: 0; font-weight: 600;">✓ Data Automation</p>
+                            <p style="color: #34a853; font-size: 0.85rem; margin: 0.3rem 0 0; font-weight: 600;">✓ Report Generation</p>
+                        </div>
+                    </div>
+
+                    <!-- Slack Integration Agent -->
+                    <div style="background: white; padding: 2rem; border-radius: 12px; border-left: 5px solid #4a154b; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">💬</div>
+                        <h4 style="color: #0f0a1a; margin: 0 0 1rem; font-weight: 700; font-size: 1.15rem;">Slack Agent</h4>
+                        <p style="color: #5a5a7a; font-size: 0.9rem; margin: 0 0 1.5rem; line-height: 1.6;">Automated notifications, task management, team updates, alerts, and conversational workflows within Slack channels.</p>
+                        <div style="background: #f0e6ff; padding: 1rem; border-radius: 8px; border-left: 3px solid #4a154b;">
+                            <p style="color: #4a154b; font-size: 0.85rem; margin: 0; font-weight: 600;">✓ Slack Integration</p>
+                            <p style="color: #4a154b; font-size: 0.85rem; margin: 0.3rem 0 0; font-weight: 600;">✓ Auto Notifications</p>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Agent -->
+                    <div style="background: white; padding: 2rem; border-radius: 12px; border-left: 5px solid #ea4335; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📅</div>
+                        <h4 style="color: #0f0a1a; margin: 0 0 1rem; font-weight: 700; font-size: 1.15rem;">Calendar Agent</h4>
+                        <p style="color: #5a5a7a; font-size: 0.9rem; margin: 0 0 1.5rem; line-height: 1.6;">Meeting scheduling, availability management, reminder automation, calendar synchronization, and conflict resolution.</p>
+                        <div style="background: #fce8e6; padding: 1rem; border-radius: 8px; border-left: 3px solid #ea4335;">
+                            <p style="color: #ea4335; font-size: 0.85rem; margin: 0; font-weight: 600;">✓ Auto Scheduling</p>
+                            <p style="color: #ea4335; font-size: 0.85rem; margin: 0.3rem 0 0; font-weight: 600;">✓ Smart Reminders</p>
+                        </div>
+                    </div>
+
+                    <!-- Custom Workflow Agent -->
+                    <div style="background: white; padding: 2rem; border-radius: 12px; border-left: 5px solid #ff9500; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚙️</div>
+                        <h4 style="color: #0f0a1a; margin: 0 0 1rem; font-weight: 700; font-size: 1.15rem;">Custom Workflow Agent</h4>
+                        <p style="color: #5a5a7a; font-size: 0.9rem; margin: 0 0 1.5rem; line-height: 1.6;">Bespoke automation solutions tailored to your business needs. Integrate multiple tools and create custom workflows.</p>
+                        <div style="background: #fff5e6; padding: 1rem; border-radius: 8px; border-left: 3px solid #ff9500;">
+                            <p style="color: #ff9500; font-size: 0.85rem; margin: 0; font-weight: 600;">✓ Custom Integration</p>
+                            <p style="color: #ff9500; font-size: 0.85rem; margin: 0.3rem 0 0; font-weight: 600;">✓ Full Customization</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Requirements Form -->
+                <div style="margin-top: 3rem; padding: 2.5rem; background: linear-gradient(135deg, #fff9f0 0%, #f0f4ff 100%); border-radius: 14px; border: 2px solid #8338ec;">
+                    <h3 style="color: #0f0a1a; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800;">
+                        📝 Tell Us Your AI Needs
+                    </h3>
+                    <p style="color: #5a5a7a; margin-bottom: 2rem; font-size: 0.95rem;">Share your automation goals and requirements. Our team will review and propose the perfect AI agent solution for your business.</p>
+
+                    <div id="aiSuccessMessage" style="background: #d4edda; color: #155724; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #28a745; margin-bottom: 1.5rem; margin-top: 1.5rem; display: none; font-size: 0.95rem;">
+                        <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">✓ Requirements Submitted!</div>
+                        <div id="aiSuccessDetails" style="margin-bottom: 0.5rem;"></div>
+                        <div>Our team will contact you within 24 hours.</div>
+                    </div>
+
+                    <form id="aiRequirementsForm" onsubmit="submitAIRequirements(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <!-- Left Column -->
+                        <div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Full Name *</label>
+                                <input type="text" name="name" placeholder="Your full name" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; transition: border 0.3s; box-sizing: border-box;" onkeyup="this.style.borderColor = this.value ? '#8338ec' : '#ddd'">
+                            </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Email Address *</label>
+                                <input type="email" name="email" placeholder="your.email@company.com" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; transition: border 0.3s; box-sizing: border-box;" onkeyup="this.style.borderColor = this.value ? '#8338ec' : '#ddd'">
+                            </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Phone Number *</label>
+                                <input type="tel" name="phone" placeholder="+60 12-345 6789" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; transition: border 0.3s; box-sizing: border-box;" onkeyup="this.style.borderColor = this.value ? '#8338ec' : '#ddd'">
+                            </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Company Name *</label>
+                                <input type="text" name="company" placeholder="Your company name" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; transition: border 0.3s; box-sizing: border-box;" onkeyup="this.style.borderColor = this.value ? '#8338ec' : '#ddd'">
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Primary AI Agent Needed *</label>
+                                <select name="agent_type" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; color: #0f0a1a; background: white; cursor: pointer; box-sizing: border-box;">
+                                    <option value="">-- Select an agent type --</option>
+                                    <option value="Email automation fully">✉️ Email Automation</option>
+                                    <option value="Google Drive management fully">📁 Google Drive Management</option>
+                                    <option value="Google Sheets data fully">📊 Google Sheets Data</option>
+                                    <option value="Slack integration fully">💬 Slack Integration</option>
+                                    <option value="Calendar automation fully">📅 Calendar Automation</option>
+                                    <option value="Custom workflow fully">⚙️ Custom Workflow</option>
+                                    <option value="Multiple integrations fully">🔗 Multiple Integrations</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Timeline for Implementation *</label>
+                                <select name="timeline" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; color: #0f0a1a; background: white; cursor: pointer; box-sizing: border-box;">
+                                    <option value="">-- Select timeline --</option>
+                                    <option value="ASAP (within 1 week)">🔴 ASAP (within 1 week)</option>
+                                    <option value="Fast (2-3 weeks)">🟠 Fast (2-3 weeks)</option>
+                                    <option value="Normal (1-2 months)">🟡 Normal (1-2 months)</option>
+                                    <option value="Flexible (no rush)">🟢 Flexible (no rush)</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Estimated Budget Range *</label>
+                                <select name="budget" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; color: #0f0a1a; background: white; cursor: pointer; box-sizing: border-box;">
+                                    <option value="">-- Select budget range --</option>
+                                    <option value="Under $5,000">Under $5,000</option>
+                                    <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+                                    <option value="$10,000 - $25,000">$10,000 - $25,000</option>
+                                    <option value="$25,000 - $50,000">$25,000 - $50,000</option>
+                                    <option value="$50,000+">$50,000+</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Full Width Fields -->
+                        <div style="grid-column: 1 / -1;">
+                            <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Detailed Requirements & Pain Points *</label>
+                            <textarea name="requirements" placeholder="Describe what processes you want to automate, current pain points, and expected outcomes..." required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; font-family: Arial; resize: vertical; min-height: 120px; box-sizing: border-box; transition: border 0.3s;" onkeyup="this.style.borderColor = this.value ? '#8338ec' : '#ddd'"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div style="grid-column: 1 / -1;">
+                            <button type="submit" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, #8338ec 0%, #ff006e 100%); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;">
+                                📤 Submit Requirements
+                            </button>
+                            <p style="color: #5a5a7a; font-size: 0.85rem; margin: 1rem 0 0; text-align: center;">We'll review your requirements and contact you with a customized proposal within 24 hours.</p>
+                        </div>
+                    </form>
+                </div>
+                <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 12px; border: 2px solid #8338ec;">
+                    <h3 style="color: #0f0a1a; margin-bottom: 1.5rem; font-size: 1.3rem; font-weight: 800;">Why Choose Our AI Agents?</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                        <div>
+                            <p style="color: #8338ec; font-size: 1.2rem; margin: 0 0 0.5rem;">🚀</p>
+                            <h5 style="color: #0f0a1a; margin: 0 0 0.5rem; font-weight: 700;">Fast Deployment</h5>
+                            <p style="color: #6b7280; font-size: 0.9rem; margin: 0;">Start automating within days, not months</p>
+                        </div>
+                        <div>
+                            <p style="color: #8338ec; font-size: 1.2rem; margin: 0 0 0.5rem;">💰</p>
+                            <h5 style="color: #0f0a1a; margin: 0 0 0.5rem; font-weight: 700;">Cost Reduction</h5>
+                            <p style="color: #6b7280; font-size: 0.9rem; margin: 0;">Reduce operational costs by up to 70%</p>
+                        </div>
+                        <div>
+                            <p style="color: #8338ec; font-size: 1.2rem; margin: 0 0 0.5rem;">🔒</p>
+                            <h5 style="color: #0f0a1a; margin: 0 0 0.5rem; font-weight: 700;">Enterprise Security</h5>
+                            <p style="color: #6b7280; font-size: 0.9rem; margin: 0;">Bank-level encryption and compliance</p>
+                        </div>
+                        <div>
+                            <p style="color: #8338ec; font-size: 1.2rem; margin: 0 0 0.5rem;">📈</p>
+                            <h5 style="color: #0f0a1a; margin: 0 0 0.5rem; font-weight: 700;">Scalable Solutions</h5>
+                            <p style="color: #6b7280; font-size: 0.9rem; margin: 0;">Grows with your business needs</p>
+                        </div>
+                        <div>
+                            <p style="color: #8338ec; font-size: 1.2rem; margin: 0 0 0.5rem;">👥</p>
+                            <h5 style="color: #0f0a1a; margin: 0 0 0.5rem; font-weight: 700;">Expert Support</h5>
+                            <p style="color: #6b7280; font-size: 0.9rem; margin: 0;">Dedicated team for implementation & support</p>
+                        </div>
+                        <div>
+                            <p style="color: #8338ec; font-size: 1.2rem; margin: 0 0 0.5rem;">🔄</p>
+                            <h5 style="color: #0f0a1a; margin: 0 0 0.5rem; font-weight: 700;">Continuous Updates</h5>
+                            <p style="color: #6b7280; font-size: 0.9rem; margin: 0;">Always improved with latest AI advancements</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="agriculture" class="page">
+        <div class="page-header"><h1>Agriculture & IoT Solutions</h1></div>
+        <div class="page-content">
+            <div class="content-section">
+                <h2>Smart Agriculture Systems</h2>
+                <p>Leverage cutting-edge IoT and wireless technologies to optimize every aspect of your agricultural operations. Our systems provide real-time monitoring, predictive insights, and automated controls for precision farming.</p>
+            </div>
+            
+            <div class="content-section">
+                <h2>Technology Stack</h2>
+                <ul>
+                    <li>LoRa wireless systems for extended-range communication</li>
+                    <li>Arduino and advanced embedded systems architecture</li>
+                    <li>Multi-sensor integration and data aggregation</li>
+                    <li>Real-time monitoring dashboards with analytics</li>
+                    <li>Cloud-based data storage and machine learning analysis</li>
+                    <li>Automated irrigation and environmental controls</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>Key Benefits</h2>
+                <ul>
+                    <li>Reduce water consumption by up to 40%</li>
+                    <li>Increase crop yield through precision management</li>
+                    <li>Make data-driven farming decisions in real-time</li>
+                    <li>Monitor multiple farms from a centralized dashboard</li>
+                    <li>Automated alerts and predictive maintenance</li>
+                    <li>Scalable architecture for farm expansion</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEM PAGE -->
+    <div id="stem" class="page">
+        <div class="page-header"><h1>STEM Education Programs</h1></div>
+        <div class="page-content">
+            <div class="content-section">
+                <h2>Hands-On Learning for Tomorrow's Innovators</h2>
+                <p>We design engaging, practical STEM education programs that inspire and equip the next generation of engineers, developers, and technical innovators. Our curriculum combines theory with real hardware and tangible projects.</p>
+            </div>
+            
+            <div class="content-section">
+                <h2>Program Offerings</h2>
+                <ul>
+                    <li>Arduino fundamentals and embedded systems design</li>
+                    <li>Python programming for beginners to advanced</li>
+                    <li>IoT and wireless communication systems</li>
+                    <li>Electronics, circuits, and hardware design</li>
+                    <li>Project-based learning with real-world applications</li>
+                    <li>Robotics and automation fundamentals</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>Our Teaching Philosophy</h2>
+                <ul>
+                    <li>Access to actual hardware and laboratory equipment</li>
+                    <li>Small group sizes for personalized mentoring</li>
+                    <li>Industry-relevant curriculum and best practices</li>
+                    <li>Supportive community of fellow learners</li>
+                    <li>Pathway from beginner to advanced proficiency</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- PARTNERSHIP SECTION -->
+    <div style="background: linear-gradient(135deg, #0f0a1a 0%, #2d1b4e 100%); padding: 5rem 2rem; margin-top: 0;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; color: white; margin-bottom: 1rem; font-weight: 800;">Partnership Opportunities</h2>
+                <p style="font-size: 1.1rem; color: #ccc; max-width: 700px; margin: 0 auto;">Let's collaborate and create innovative solutions together. We welcome partnerships across training, AI solutions, and enterprise innovation.</p>
+            </div>
+
+            <!-- Partnership Types -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 0, 110, 0.3); text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
+                    <h3 style="color: white; font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 700;">Training Partner</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">Co-deliver professional training programs</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; border: 1px solid rgba(131, 56, 236, 0.3); text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
+                    <h3 style="color: white; font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 700;">Technology Partner</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">Collaborate on AI and automation solutions</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 0, 110, 0.3); text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💼</div>
+                    <h3 style="color: white; font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 700;">Business Partner</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">Explore strategic business opportunities</p>
+                </div>
+            </div>
+
+            <!-- Partnership Form -->
+            <div style="background: white; padding: 3rem; border-radius: 16px; max-width: 800px; margin: 0 auto;">
+                <h3 style="color: #0f0a1a; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 800;">Let's Talk About Collaboration</h3>
+                
+                <form id="partnershipForm" onsubmit="submitPartnership(event)" style="display: grid; gap: 1.5rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div>
+                            <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Full Name *</label>
+                            <input type="text" id="partnerName" name="name" placeholder="Your name" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; transition: border 0.3s; box-sizing: border-box;" onkeyup="this.style.borderColor = this.value ? '#8338ec' : '#ddd'">
+                        </div>
+
+                        <div>
+                            <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Email Address *</label>
+                            <input type="email" id="partnerEmail" name="email" placeholder="your@email.com" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; transition: border 0.3s; box-sizing: border-box;" onkeyup="this.style.borderColor = this.value ? '#8338ec' : '#ddd'">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div>
+                            <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Company/Organization *</label>
+                            <input type="text" id="partnerCompany" name="company" placeholder="Company name" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; transition: border 0.3s; box-sizing: border-box;" onkeyup="this.style.borderColor = this.value ? '#8338ec' : '#ddd'">
+                        </div>
+
+                        <div>
+                            <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Partnership Type *</label>
+                            <select id="partnerType" name="partnership_type" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; color: #0f0a1a; background: white; cursor: pointer; box-sizing: border-box;">
+                                <option value="">-- Select type --</option>
+                                <option value="Training Partner">🎓 Training Partner</option>
+                                <option value="Technology Partner">🚀 Technology Partner</option>
+                                <option value="Business Partner">💼 Business Partner</option>
+                                <option value="Other">📋 Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">Phone Number *</label>
+                        <input type="tel" id="partnerPhone" name="phone" placeholder="+60 12-345 6789" required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; transition: border 0.3s; box-sizing: border-box;" onkeyup="this.style.borderColor = this.value ? '#8338ec' : '#ddd'">
+                    </div>
+
+                    <div>
+                        <label style="display: block; color: #0f0a1a; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">How Can We Collaborate? *</label>
+                        <textarea id="partnerDetails" name="details" placeholder="Tell us about your collaboration ideas, interests, or how we can work together..." required style="width: 100%; padding: 0.75rem; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; font-family: Arial; resize: vertical; min-height: 100px; box-sizing: border-box; transition: border 0.3s;" onkeyup="this.style.borderColor = this.value ? '#8338ec' : '#ddd'"></textarea>
+                    </div>
+
+                    <button type="submit" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;">
+                        🤝 Send Partnership Inquiry
+                    </button>
+
+                    <div id="partnerSuccessMessage" style="background: #d4edda; color: #155724; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #28a745; display: none; margin-top: 1rem;">
+                        <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">✓ Partnership Inquiry Sent!</div>
+                        <div id="partnerSuccessDetails" style="margin-bottom: 0.5rem;"></div>
+                        <div>We'll review your inquiry and contact you within 48 hours.</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLIENTS SECTION -->
+    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #f0f4ff 100%); padding: 3rem 2rem; margin: 3rem 0 0 0; border-top: 2px solid #e8ecf1;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="font-size: 1.8rem; color: #0f0a1a; margin-bottom: 0.5rem; font-weight: 800;">Trusted By</h2>
+            </div>
+
+            <!-- Scrolling Clients Container -->
+            <div style="overflow: hidden; position: relative;">
+                <style>
+                    @keyframes scrollClients {
+                        0% { transform: translateX(100%); }
+                        100% { transform: translateX(-100%); }
+                    }
+                    .clients-scroll {
+                        display: flex;
+                        gap: 2rem;
+                        animation: scrollClients 20s linear infinite;
+                        padding: 1rem 0;
+                    }
+                    .clients-scroll:hover {
+                        animation-play-state: paused;
+                    }
+                    .client-card {
+                        flex-shrink: 0;
+                        background: white;
+                        padding: 1.5rem 2rem;
+                        border-radius: 10px;
+                        text-align: center;
+                        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+                        transition: all 0.3s ease;
+                        border: 2px solid transparent;
+                        min-width: 200px;
+                    }
+                    .client-card:hover {
+                        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+                        transform: translateY(-3px);
+                        border-color: #ff006e;
+                    }
+                </style>
+
+                <div class="clients-scroll">
+                    <!-- Client 1: KACC -->
+                    <div class="client-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.3;">🏢</div>
+                        <h3 style="font-size: 1.1rem; color: #0f0a1a; margin-bottom: 0.3rem; font-weight: 700;">KACC</h3>
+                        <p style="color: #5a5a7a; font-size: 0.8rem;">Strategic Partner</p>
+                    </div>
+
+                    <!-- Client 2: NExt -->
+                    <div class="client-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.3;">🚀</div>
+                        <h3 style="font-size: 1.1rem; color: #0f0a1a; margin-bottom: 0.3rem; font-weight: 700;">NExt</h3>
+                        <p style="color: #5a5a7a; font-size: 0.8rem;">Innovation Leader</p>
+                    </div>
+
+                    <!-- Client 3: INCEPT -->
+                    <div class="client-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.3;">⚡</div>
+                        <h3 style="font-size: 1.1rem; color: #0f0a1a; margin-bottom: 0.3rem; font-weight: 700;">INCEPT</h3>
+                        <p style="color: #5a5a7a; font-size: 0.8rem;">Growth Partner</p>
+                    </div>
+
+                    <!-- Duplicate for seamless loop -->
+                    <div class="client-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.3;">🏢</div>
+                        <h3 style="font-size: 1.1rem; color: #0f0a1a; margin-bottom: 0.3rem; font-weight: 700;">KACC</h3>
+                        <p style="color: #5a5a7a; font-size: 0.8rem;">Strategic Partner</p>
+                    </div>
+
+                    <div class="client-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.3;">🚀</div>
+                        <h3 style="font-size: 1.1rem; color: #0f0a1a; margin-bottom: 0.3rem; font-weight: 700;">NExt</h3>
+                        <p style="color: #5a5a7a; font-size: 0.8rem;">Innovation Leader</p>
+                    </div>
+
+                    <div class="client-card">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.3;">⚡</div>
+                        <h3 style="font-size: 1.1rem; color: #0f0a1a; margin-bottom: 0.3rem; font-weight: 700;">INCEPT</h3>
+                        <p style="color: #5a5a7a; font-size: 0.8rem;">Growth Partner</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Quantum Technology. All rights reserved.</p>
+        <p>📍 Petaling Jaya, Selangor, Malaysia</p>
+        <p style="margin-top: 1.5rem; opacity: 0.8; font-size: 0.9rem;">Transforming Ideas into Innovation</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function selectCourse(courseId, btn) {
+            // Hide all courses
+            document.querySelectorAll('.course-section').forEach(c => c.classList.remove('active'));
+            // Show selected course
+            document.getElementById('course-' + courseId).classList.add('active');
+            // Update course buttons
+            document.querySelectorAll('.course-toggle-container .toggle-btn').forEach(b => b.classList.remove('active'));
+            if (btn) {
+                btn.classList.add('active');
+            }
+            window.scrollTo(0, document.querySelector('.page-content').offsetTop - 100);
+        }
+
+        function toggleOutline(outlineId, btn) {
+            // Find all outline sections in the current course
+            const currentCourse = document.querySelector('.course-section.active');
+            const outlineSections = currentCourse.querySelectorAll('.outline-section');
+            outlineSections.forEach(s => s.classList.remove('active'));
+            
+            // Show selected outline
+            document.getElementById(outlineId).classList.add('active');
+            
+            // Update duration buttons in current course
+            const toggleBtns = currentCourse.querySelectorAll('.toggle-container .toggle-btn');
+            toggleBtns.forEach(b => b.classList.remove('active'));
+            if (btn) {
+                btn.classList.add('active');
+            }
+        }
+
+        function updateDurationOptions() {
+            const courseSelect = document.getElementById('course');
+            const durationSelect = document.getElementById('duration');
+            const selectedCourse = courseSelect.value;
+            
+            // Hide all options first
+            document.getElementById('opt-2day').style.display = 'none';
+            document.getElementById('opt-3day').style.display = 'none';
+            document.getElementById('opt-4day').style.display = 'none';
+            
+            // Reset duration
+            durationSelect.value = '';
+            
+            // Show options based on selected course
+            if (selectedCourse === 'PowerBI') {
+                document.getElementById('opt-2day').style.display = 'block';
+            } else if (selectedCourse === 'Python') {
+                document.getElementById('opt-3day').style.display = 'block';
+            } else if (selectedCourse === 'Coming Soon') {
+                document.getElementById('opt-2day').style.display = 'block';
+                document.getElementById('opt-4day').style.display = 'block';
+            }
+        }
+
+        // Add event listener to course dropdown
+        document.addEventListener('DOMContentLoaded', function() {
+            const courseSelect = document.getElementById('course');
+            if (courseSelect) {
+                courseSelect.addEventListener('change', updateDurationOptions);
+            }
+        });
+
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                course: document.getElementById('course').value,
+                format: document.querySelector('input[name="format"]:checked').value,
+                duration: document.getElementById('duration').value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            // Get course full name for display
+            const courseSelect = document.getElementById('course');
+            const courseFullName = courseSelect.options[courseSelect.selectedIndex].text;
+
+            // Update success message with name and course
+            const successDetails = document.getElementById('successDetails');
+            successDetails.innerHTML = `<strong>${formData.name}</strong> has successfully enrolled for<br><strong>${courseFullName}</strong><br><br>Our team will contact you within 24 hours.`;
+
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('enrollmentForm').reset();
+
+            // Scroll to success message
+            setTimeout(() => {
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+
+            // Hide message when user starts typing in form again
+            const formInputs = document.querySelectorAll('#enrollmentForm input, #enrollmentForm select, #enrollmentForm textarea');
+            formInputs.forEach(input => {
+                input.addEventListener('input', function hideMessageOnInput() {
+                    document.getElementById('successMessage').style.display = 'none';
+                    input.removeEventListener('input', hideMessageOnInput);
+                    formInputs.forEach(i => i.removeEventListener('input', hideMessageOnInput));
+                }, { once: true });
+            });
+
+            //const webhookUrl = 'https://script.google.com/macros/s/AKfycbwqouiCOtYUYGnwykZg6LrYlZO6f_5GBhkDwsgHy2jfZDLGp-TmyvavkdAF6d5aCCOq/exec';
+            https://hook.us2.make.com/n9f5b0or2wpx52tigoym0mmp4qvo07ai
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+            
+		fetch(webhookUrl,{
+    		method:"POST",
+
+    		headers:{
+        	"Content-Type":"application/json"
+    		},
+
+    		body:JSON.stringify(formData),
+
+    		signal:controller.signal
+		})
+            .then(response => response.json())
+            .then(data => {
+                clearTimeout(timeoutId);
+                console.log('✓ Data saved to Google Sheet:', data);
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.log('✓ Form submitted. Saving to Google Sheet...', error.message);
+            });
+        }
+
+        // ===== CHART VALUE ANIMATIONS =====
+        function animateCounter(element, endValue, duration = 800) {
+            let startValue = parseFloat(element.textContent) || 0;
+            let startTime = Date.now();
+            
+            function update() {
+                let elapsed = Date.now() - startTime;
+                let progress = Math.min(elapsed / duration, 1);
+                let currentValue = startValue + (endValue - startValue) * progress;
+                
+                if (element.dataset.type === 'currency') {
+                    element.textContent = '$' + currentValue.toFixed(1) + 'M';
+                } else if (element.dataset.type === 'percent') {
+                    element.textContent = Math.round(currentValue) + '%';
+                } else {
+                    element.textContent = Math.round(currentValue) + 'K';
+                }
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            update();
+        }
+
+        // Update bar chart values
+        function updateBarChart() {
+            const datasets = [
+                [42, 75, 88, 65, 52],
+                [48, 82, 105, 72, 58],
+                [35, 68, 95, 78, 48],
+                [55, 90, 92, 68, 60]
+            ];
+            
+            let currentDataset = 0;
+            
+            setInterval(() => {
+                const data = datasets[currentDataset];
+                const maxValue = 120;
+                
+                const bars = document.querySelectorAll('.bar-chart-container svg rect');
+                
+                bars.forEach((bar, index) => {
+                    if (index < 5) {
+                        const newHeight = (data[index] / maxValue) * 120;
+                        bar.style.transition = 'height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                        bar.setAttribute('height', newHeight);
+                    }
+                });
+                
+                currentDataset = (currentDataset + 1) % datasets.length;
+            }, 4000);
+        }
+
+        // Update pie chart percentages
+        function updatePieChart() {
+            const datasets = [
+                [25, 30, 28, 17],
+                [28, 25, 32, 15],
+                [22, 35, 25, 18],
+                [30, 28, 24, 18]
+            ];
+            
+            let currentDataset = 0;
+            const circumference = 2 * Math.PI * 40;
+            
+            setInterval(() => {
+                const percentages = datasets[currentDataset];
+                const segments = document.querySelectorAll('.pie-chart-container svg circle[stroke]');
+                
+                let offset = 0;
+                segments.forEach((segment, index) => {
+                    if (index < 4) {
+                        const percent = percentages[index];
+                        const dasharray = (percent / 100) * circumference;
+                        
+                        segment.style.transition = 'stroke-dasharray 1.2s ease-in-out, stroke-dashoffset 1.2s ease-in-out';
+                        segment.setAttribute('stroke-dasharray', dasharray + ' ' + circumference);
+                        segment.setAttribute('stroke-dashoffset', -offset);
+                        
+                        offset += dasharray;
+                    }
+                });
+                
+                currentDataset = (currentDataset + 1) % datasets.length;
+            }, 5000);
+        }
+
+        // Update KPI values
+        function updateKPIValues() {
+            const kpiValues = [2.4, 2.8, 2.6, 3.1];
+            
+            let currentIndex = 0;
+            
+            setInterval(() => {
+                const kpi = kpiValues[currentIndex];
+                const revenueEl = document.getElementById('kpi-revenue');
+                
+                if (revenueEl) {
+                    revenueEl.dataset.type = 'currency';
+                    animateCounter(revenueEl, kpi, 1000);
+                }
+                
+                currentIndex = (currentIndex + 1) % kpiValues.length;
+            }, 4500);
+        }
+
+        // AI Requirements Form Submission
+        function submitAIRequirements(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('aiRequirementsForm');
+            const successMessage = document.getElementById('aiSuccessMessage');
+            
+            const formData = {
+                type: 'AI Requirements',
+                name: form.elements['name'].value,
+                email: form.elements['email'].value,
+                phone: form.elements['phone'].value,
+                company: form.elements['company'].value,
+                agent_type: form.elements['agent_type'].value,
+                timeline: form.elements['timeline'].value,
+                budget: form.elements['budget'].value,
+                requirements: form.elements['requirements'].value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            // Update success message with company and agent type
+            const aiSuccessDetails = document.getElementById('aiSuccessDetails');
+            aiSuccessDetails.innerHTML = `<strong>${formData.company}</strong> has submitted requirements for <strong>${formData.agent_type}</strong>`;
+
+            // Show success message
+            successMessage.style.display = 'block';
+            form.reset();
+            
+            // Scroll to success message
+            setTimeout(() => {
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+
+            // Replace with your Google Apps Script webhook URL for AI requirements
+            const webhookUrl = 'https://script.google.com/macros/s/AKfycbwqouiCOtYUYGnwykZg6LrYlZO6f_5GBhkDwsgHy2jfZDLGp-TmyvavkdAF6d5aCCOq/exec';
+            
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+            
+            fetch(webhookUrl, {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                signal: controller.signal
+            })
+            .then(response => response.json())
+            .then(data => {
+                clearTimeout(timeoutId);
+                console.log('✓ AI requirements submitted:', data);
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.log('✓ Form submitted. Saving to Google Sheet...', error.message);
+            });
+
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 6000);
+        }
+
+        function submitPartnership(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('partnershipForm');
+            const successMessage = document.getElementById('partnerSuccessMessage');
+            
+            const formData = {
+                type: 'Partnership Inquiry',
+                name: document.getElementById('partnerName').value,
+                email: document.getElementById('partnerEmail').value,
+                phone: document.getElementById('partnerPhone').value,
+                company: document.getElementById('partnerCompany').value,
+                partnership_type: document.getElementById('partnerType').value,
+                details: document.getElementById('partnerDetails').value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            // Update success message with company and partnership type
+            const partnerSuccessDetails = document.getElementById('partnerSuccessDetails');
+            partnerSuccessDetails.innerHTML = `<strong>${formData.company}</strong> has submitted a partnership inquiry for <strong>${formData.partnership_type}</strong>`;
+
+            // Show success message
+            successMessage.style.display = 'block';
+            form.reset();
+            
+            // Scroll to success message
+            setTimeout(() => {
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+
+            // Use same webhook URL (sends to Google Sheets)
+            const webhookUrl = 'https://script.google.com/macros/s/AKfycbwqouiCOtYUYGnwykZg6LrYlZO6f_5GBhkDwsgHy2jfZDLGp-TmyvavkdAF6d5aCCOq/exec';
+            
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+            
+            fetch(webhookUrl, {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                signal: controller.signal
+            })
+            .then(response => response.json())
+            .then(data => {
+                clearTimeout(timeoutId);
+                console.log('✓ Partnership inquiry submitted:', data);
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.log('✓ Partnership inquiry submitted. Saving to Google Sheet...', error.message);
+            });
+
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 6000);
+        }
+
+        // Python Code Examples Database
+        const pythonExamples = {
+            hello: {
+                code: `# Hello World with Variables
+name = "Python Learner"
+age = 25
+
+print("Hello, " + name)
+print("You are " + str(age) + " years old")
+print("Welcome to Python!")`,
+                output: `Hello, Python Learner
+You are 25 years old
+Welcome to Python!`
+            },
+            list: {
+                code: `# Working with Python Lists
+fruits = ["Apple", "Banana", "Orange", "Mango"]
+
+print("First fruit:", fruits[0])
+print("Last fruit:", fruits[-1])
+print("All fruits:", fruits)
+print("List length:", len(fruits))
+
+fruits.append("Pineapple")
+print("After adding:", fruits)`,
+                output: `First fruit: Apple
+Last fruit: Mango
+All fruits: ['Apple', 'Banana', 'Orange', 'Mango']
+List length: 4
+After adding: ['Apple', 'Banana', 'Orange', 'Mango', 'Pineapple']`
+            },
+            loop: {
+                code: `# For Loop - Print Numbers & Stars
+print("Counting 1 to 5:")
+for i in range(1, 6):
+    print(i)
+
+print("\nBuilding a pattern:")
+for i in range(1, 6):
+    print("★" * i)`,
+                output: `Counting 1 to 5:
+1
+2
+3
+4
+5
+
+Building a pattern:
+★
+★★
+★★★
+★★★★
+★★★★★`
+            },
+            function: {
+                code: `# Functions and Return Values
+def greet(name):
+    return "Hello, " + name + "!"
+
+def add_numbers(a, b):
+    return a + b
+
+result1 = greet("Alice")
+result2 = add_numbers(10, 25)
+
+print(result1)
+print("10 + 25 =", result2)
+print("Sum doubled:", result2 * 2)`,
+                output: `Hello, Alice!
+10 + 25 = 35
+Sum doubled: 70`
+            },
+            dict: {
+                code: `# Working with Dictionaries
+student = {
+    "name": "John Doe",
+    "grade": "A",
+    "age": 20,
+    "major": "Computer Science"
+}
+
+print("Student Info:")
+print("Name:", student["name"])
+print("Grade:", student["grade"])
+print("Age:", student["age"])
+
+student["gpa"] = 3.8
+print("\nUpdated:", student)`,
+                output: `Student Info:
+Name: John Doe
+Grade: A
+Age: 20
+
+Updated: {'name': 'John Doe', 'grade': 'A', 'age': 20, 'major': 'Computer Science', 'gpa': 3.8}`
+            },
+            calc: {
+                code: `# Simple Calculator with Conditions
+def calculate(num1, num2, operation):
+    if operation == "+":
+        return num1 + num2
+    elif operation == "-":
+        return num1 - num2
+    elif operation == "*":
+        return num1 * num2
+    elif operation == "/":
+        return num1 / num2
+    else:
+        return "Invalid operation"
+
+print("15 + 8 =", calculate(15, 8, "+"))
+print("20 - 5 =", calculate(20, 5, "-"))
+print("6 * 7 =", calculate(6, 7, "*"))
+print("100 / 4 =", calculate(100, 4, "/"))`,
+                output: `15 + 8 = 23
+20 - 5 = 15
+6 * 7 = 42
+100 / 4 = 25.0`
+            }
+        };
+
+        // Load Python Code
+        function loadPythonCode(exampleId) {
+            const codeDisplay = document.getElementById('pythonCodeDisplay');
+            const outputDisplay = document.getElementById('pythonOutput');
+            
+            if (!exampleId) {
+                codeDisplay.innerHTML = '<span style="color: #999;">// Select an example above to view code</span>';
+                outputDisplay.innerHTML = '<span style="color: #999;">// Click "Run Code" to see output here</span>';
+                return;
+            }
+
+            const example = pythonExamples[exampleId];
+            if (example) {
+                // Display code with syntax highlighting
+                codeDisplay.textContent = example.code;
+                // Clear output until Run is clicked
+                outputDisplay.innerHTML = '<span style="color: #999;">// Click "Run Code" to see output</span>';
+            }
+        }
+
+        // Run Python Code (Show Output)
+        function runPythonCode() {
+            const select = document.getElementById('pythonCodeSelect');
+            const exampleId = select.value;
+            const outputDisplay = document.getElementById('pythonOutput');
+
+            if (!exampleId) {
+                outputDisplay.innerHTML = '<span style="color: #ff6b6b;">Error: Please select a code example first</span>';
+                return;
+            }
+
+            const example = pythonExamples[exampleId];
+            outputDisplay.style.animation = 'fadeInUp 0.5s ease-out';
+            outputDisplay.textContent = example.output;
+
+            // Remove animation class after it completes
+            setTimeout(() => {
+                outputDisplay.style.animation = 'none';
+            }, 500);
+        }
+
+        // Dashboard Service: pre-select package and scroll to request form
+        function selectDashboardPackage(packageName) {
+            const packageSelect = document.getElementById('dashboardPackage');
+            if (packageSelect) {
+                packageSelect.value = packageName;
+            }
+            document.getElementById('dashboardRequestForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Dashboard Request Form Submission
+        function submitDashboardRequest(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('dashboardRequestForm');
+            const successMessage = document.getElementById('dashboardSuccessMessage');
+
+            const formData = {
+                type: 'Dashboard Request',
+                name: form.elements['name'].value,
+                email: form.elements['email'].value,
+                company: form.elements['company'].value,
+                phone: form.elements['phone'].value,
+                package: form.elements['package'].value,
+                timeline: form.elements['timeline'].value,
+                data_sources: form.elements['data_sources'].value,
+                kpis: form.elements['kpis'].value,
+                notes: form.elements['notes'].value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            // Update success message with company and package
+            const dashboardSuccessDetails = document.getElementById('dashboardSuccessDetails');
+            dashboardSuccessDetails.innerHTML = `<strong>${formData.company}</strong> has requested a <strong>${formData.package}</strong> dashboard package`;
+
+            // Show success message immediately
+            successMessage.style.display = 'block';
+            form.reset();
+
+            // Scroll to success message
+            setTimeout(() => {
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+
+            const webhookUrl = 'https://script.google.com/macros/s/AKfycbwqouiCOtYUYGnwykZg6LrYlZO6f_5GBhkDwsgHy2jfZDLGp-TmyvavkdAF6d5aCCOq/exec';
+
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                signal: controller.signal
+            })
+            .then(response => response.json())
+            .then(data => {
+                clearTimeout(timeoutId);
+                console.log('✓ Dashboard request submitted:', data);
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.log('✓ Form submitted. Saving to Google Sheet...', error.message);
+            });
+
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 8000);
+        }
+
+        // Auto-start animations when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                updateBarChart();
+                updatePieChart();
+                updateKPIValues();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
